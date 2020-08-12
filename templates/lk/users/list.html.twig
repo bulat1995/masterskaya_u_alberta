@@ -1,0 +1,38 @@
+{% extends 'base.html.twig' %}
+{% block title %}{{'users'|trans}}
+{% endblock %}
+{% block body %}
+    {% include 'lk/document/javascript.js.twig' %}
+    <nav aria-label="breadcrumb">
+      <ol class="breadcrumb">
+        <li class="breadcrumb-item"><a href="{{ path('users.list') }}">{{'users'|trans}}</a></li>
+      </ol>
+    </nav>
+    <h2 class="mb-4">{{'users'|trans}} </h2>
+    {% include 'messages.html.twig' %}
+<table class="table">
+    <thead>
+        <tr>
+            <th>Логин</th>
+            <th>email</th>
+            <th>Права</th>
+            <th>Статус</th>
+            <th>Действия</th>
+        </tr>
+    </thead>
+    {% for user in users %}
+    <tr>
+        <td>{{user.username}}</td>
+        <td>{{user.email}}</td>
+        <td>
+        {% for rule in user.roles %}
+            {{user.rolesName(rule)}},
+        {% endfor %}
+        </td>
+        <td>{% if not user.enabled %} Отключен {% else %} Активен {% endif %}</td>
+        <td><a href="{{ path('user.show',{id: user.id})}}">Редактировать</a>
+            <a href="{{ path('users.delete',{id: user.id})}}" onclick="return confirm('Вы действительно хотитет удалить данного пользователя')">Удалить</a></td>
+    </tr>
+    {% endfor %}
+</table>
+{% endblock %}

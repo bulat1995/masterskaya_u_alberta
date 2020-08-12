@@ -1,0 +1,19 @@
+{% extends 'base.html.twig' %}
+{% block body %}
+    <nav aria-label="breadcrumb">
+      <ol class="breadcrumb">
+        <li class="breadcrumb-item"><a href="{{ path('client.list') }}">{{'clients'|trans}}</a></li>
+		    <li class="breadcrumb-item active" aria-current="page">{{'client.edit'|trans}}</li>
+      </ol>
+    </nav>
+    <h2 class="mb-5">{{'client.edit'|trans}}</h2>
+    {{ form_start(form) }}
+    {{form_widget(form)}}
+        <div class="form-group">
+            <div class="pull-right">
+                <button type="submit" class="btn btn-primary">
+                {{'edit'|trans}}</button>
+            </div>
+        </div>
+    {{ form_end(form) }}
+{% endblock %}

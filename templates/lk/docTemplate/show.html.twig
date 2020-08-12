@@ -1,0 +1,55 @@
+ {% extends 'base.html.twig' %}
+{% block title %} {{'template'|trans}} {{docTemplate.name}} {% endblock %}
+
+{% block body %}
+	<nav aria-label="breadcrumb">
+	  <ol class="breadcrumb">
+	    <li class="breadcrumb-item"><a href="{{ path('template.list') }}">{{'templates'|trans}}</a></li>
+	    <li class="breadcrumb-item active">{{docTemplate.name}}</li>
+	  </ol>
+	  <h3 class="pull-left"> {{ docTemplate.name }} </h3>
+
+      {% if is_granted('ROLE_TEMPLATE_EDIT') %}
+      <a class="pull-right" href="{{ path('template.edit', {id: docTemplate.id})}} ">
+          <button class="btn btn-primary btn-outline">{{'edit'|trans}}</button>
+      </a>
+      {% endif %}
+
+      {% if docTemplate.documents|length==0  and docTemplate.catalogs|length==0%}
+        {% if is_granted('ROLE_TEMPLATE_DELETE') %}
+        <a class="pull-right" style="margin-right:1%;" href="{{ path('doc-template.delete', {id: docTemplate.id})}} ">
+            <button class="btn btn-danger btn-outline">{{'delete'|trans}}</button>
+        </a>
+        {% endif %}
+      {% endif %}
+
+    
+
+
+            <div class="clearfix"></div>
+  <ul class="nav customtab nav-tabs" role="tablist">
+        <li role="presentation" class="active"><a href="#main" aria-controls="home" role="tab" data-toggle="tab" aria-expanded="false"><span class="visible-xs"><i class="ti-home"></i></span><span class="hidden-xs"> {{'mainInfo'|trans}}</span></a></li>
+        <li role="presentation" class=""><a href="#document" aria-controls="profile" role="tab" data-toggle="tab" aria-expanded="true"><span class="visible-xs"><i class="ti-user"></i></span> <span class="hidden-xs">{{'document'|trans}}</span></a></li>
+        <li role="presentation" class=""><a href="#subDoc" aria-controls="profile" role="tab" data-toggle="tab" aria-expanded="true"><span class="visible-xs"><i class="ti-user"></i></span> <span class="hidden-xs">{{'application'|trans}}</span></a></li>
+    </ul>
+    <!-- Tab panes -->
+    <div class="tab-content">
+        <div role="tabpanel" class="tab-pane fade active in" id="main">
+          <p>Статус шаблона: {% if docTemplate.active %}<span >Активен</span>{% else %} <span >Неактивен</span> {%endif%}</p>
+          <p>Количество услуг: {{docTemplate.catalogs|length}} </p>
+          <p>Количество документов использующих шаблон:  {{docTemplate.documents|length}}</p>
+
+
+            <div class="clearfix"></div>
+        </div>
+        <div role="tabpanel" class="tab-pane fade " id="document">
+            {{docTemplate.document|raw}}
+            <div class="clearfix"></div>
+        </div>
+        <div role="tabpanel" class="tab-pane fade " id="subDoc">
+          {{docTemplate.subDoc|raw}}
+            <div class="clearfix"></div>
+        </div>
+    </div>
+
+ {% endblock %}

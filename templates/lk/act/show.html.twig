@@ -1,0 +1,87 @@
+{% extends 'base.html.twig' %}
+{% block title %} {{'actFor'|trans}} {{act.client.companyName}} {% endblock %}
+
+{% block body %}
+    <nav aria-label="breadcrumb">
+      <ol class="breadcrumb">
+        <li class="breadcrumb-item"><a href="{{ path('act.list') }}">{{'acts'|trans}}</a></li>
+        <li class="breadcrumb-item active">{{act.client.companyName}} </li>
+      </ol>
+    </nav>
+    {% if act.debt != 0  and is_granted('ROLE_ACT_EDIT') %}
+    <a class="float-right" href="{{ path('act.edit',{id: act.id}) }}">
+        <button type="button" class="btn btn-outline-primary">{{'edit'|trans}}</button>
+    </a>
+    {% endif %}
+
+    {% if act.canDelete and is_granted('ROLE_ACT_DELETE') %}
+    <a class="float-right mr-2" onclick="return confirm('Вы действительно хотите удалить данный акт?')" href="{{ path('act.delete',{id: act.id}) }}">
+        <button type="button" class="btn btn-outline-danger">{{'delete'|trans}}</button>
+    </a>
+    {% endif %}
+
+    <h2 class="mb-4">{{'act'|trans}}</h2>
+
+      <div class="row mb-1">
+        <div class="col-lg-3">
+          {{ 'client.companyName'|trans }}
+        </div>
+        <div class="col-lg-9">
+          <a href="{{ path('client.show',{id: act.client.id}) }}">
+            {{ act.client.companyName}}
+          </a>
+        </div>
+      </div>
+
+      <div class="row mb-2">
+        <div class="col-lg-3">
+          {{ 'client.ruler'|trans }}
+        </div>
+        <div class="col-lg-6">
+          {{ act.client.positionName}} {{ act.client.bossName}}
+        </div>
+      </div>
+
+    <h2 class="mt-4">{{ 'catalogs'|trans}}</h2>
+
+<div class="table-responsive">
+    <table class="table table-striped">
+      <thead>
+        <tr>
+          <th>{{ 'catalog.name'|trans}} </th>
+          <th>{{ 'catalog.price'|trans}}.</th>
+          <th> {{ 'work.count'|trans}}</th>
+          <th> {{ 'work.fullPrice'|trans}}</th>
+          <th> {{ 'work.isPayed'|trans}}</th>
+        </tr>
+      </thead>
+      <tbody>
+    {% for work in act.works %}
+    	<tr>
+    		<td>
+                {%if work.document is not null%}
+                    <a href="{{ path('document.show',{id:work.document.id}) }}" target="_blank"> {{ work.catalog.name}} </a>
+                {% else %}
+                    {{ work.catalog.name}}
+                {% endif %}
+
+            </td>
+    		<td>{{ work.price}} {{ 'rubles.short'|trans}}.</td>
+    		<td> {{ work.count}} {{ work.catalog.countName}}</td>
+            <td> {{ work.fullPrice}} {{ 'rubles.short'|trans}}</td>
+            <td>
+            {% if work.isPayed %}
+                <span class="btn btn-success">{{ 'work.payed'|trans }} <span class="badge badge-light">{{work.datePayed|date("d.m.Y")}}</span></span>
+            {% else %}
+                <span class="btn btn-danger">{{ 'work.notPayed'|trans }}</span>
+            {% endif %}
+            </td>
+        </tr>
+    {% endfor %}
+    </tbody>
+  	</table>
+</div>
+    <div class="float-right">
+      <h4><b>{{ 'act.price'|trans}}:</b>  {{act.price}}  {{ 'rubles.short'|trans}}</h4>
+    </div>
+{% endblock %}

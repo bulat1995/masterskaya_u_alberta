@@ -1,0 +1,17 @@
+{% extends 'base.html.twig' %}
+{% block title %} {{'template.create'|trans}} {% endblock %}
+{% block body %}
+    <nav aria-label="breadcrumb">
+      <ol class="breadcrumb">
+        <li class="breadcrumb-item"><a href="{{ path('template.list') }}">{{'templates'|trans}}</a></li>
+        <li class="breadcrumb-item active">{{'template.new'|trans}}</li>
+      </ol>
+    </nav>
+    <h2 class="mb-4">{{'template.new'|trans}} </h2>
+    {{ form_start(form) }}
+        {{ form_widget(form) }}
+        <div class="form-group">
+                <button type="submit" class="btn  btn-outline btn-success pull-right">{{'add'|trans}}</button>
+        </div>
+    {{ form_end(form) }}
+{% endblock %}

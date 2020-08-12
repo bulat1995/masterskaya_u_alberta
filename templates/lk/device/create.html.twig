@@ -1,0 +1,27 @@
+{% extends 'base.html.twig' %}
+
+{% block title %} {{'device.create'|trans}} {% endblock %}
+
+{% block body %}
+
+<nav aria-label="breadcrumb">
+	  <ol class="breadcrumb">
+	    <li class="breadcrumb-item"><a href="{{ path('device.show') }}">{{'devices'|trans}}</a></li>
+	    <li class="breadcrumb-item active" aria-current="page"> {{'device.create'|trans}}</li>
+	  </ol>
+	</nav>
+
+    <h2 class="m-3 ml-0"> {{'device.create'|trans}} </h2>
+    {{ form_start(form) }}
+       {{ form_row(form.name)}}
+       {{ form_row(form.category)|replace({"&amp;": "&"})|raw }}
+       {{ form_widget(form) }}
+        <div class="form-group">
+            <div class="pull-right">
+                <button type="submit" class="btn  btn-outline btn-success">{{'add'|trans}}</button>
+            </div>
+        </div>
+
+    {{ form_end(form) }}
+
+{% endblock %}

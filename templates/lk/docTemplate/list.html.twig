@@ -1,0 +1,43 @@
+{% extends 'base.html.twig' %}
+{% block title %} {{'templates'|trans}} {% endblock %}
+
+{% block body %}
+	<nav aria-label="breadcrumb">
+	  <ol class="breadcrumb">
+	    <li class="breadcrumb-item"><a href="{{ path('template.list') }}">{{'templates'|trans}}</a></li>
+	  </ol>
+	</nav>
+    <div class="row pb-2 mb-3">
+		<div class="col-lg-8">
+	            <font size="5">
+	                    {{'templates'|trans}}
+	            </font>
+		</div>
+		<div class="col-lg-4 ">
+			<div class="pull-right">
+				  <a href="{{ path('template.psevdo') }}" class="btn  btn-outline btn-info" role="button">
+					  {{'template.psevdo'|trans}}
+				  </a>
+
+  				{% if is_granted('ROLE_TEMPLATE_CREATE') %}
+				  <a href="{{ path('template.create') }}" class="btn  btn-outline btn-success" role="button">
+                     {{'template.create'|trans}}
+                 </a>
+				 {% endif %}
+			 </div>
+        </div>
+    </div>
+
+    {% if docTemplates is empty %}
+       {% include 'block_empty.html.twig' %}
+    {% else%}
+	<div class="list-group" style="margin-top:1%;">
+		{% for template in docTemplates %}
+		  <a  href="{{ path('template.show',{id: template.id}) }}" class="list-group-item list-group-item-action">
+		    {{template.name}}
+			{% if template.active %}<span class="label label-success pull-right">Активен</span>{% else %} <span class="label label-danger pull-right">Неактивен</span>{% endif %}
+		  </a>
+		  {% endfor %}
+	</div>
+    {% endif %}
+{% endblock %}

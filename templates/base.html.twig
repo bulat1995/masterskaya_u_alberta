@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>{% block title %}Мастерская "У Альберта"{% endblock %}</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <meta content="width=device-width, initial-scale=1" name="viewport">
+    {% block favicon %} <link rel="shorcut icon" href="/images/logo.png" type="image/png">{% endblock %}
+    {% block stylesheets %}{% endblock %}
+    <script src="/js/jquery-3.5.1.min.js"></script>
+    <script src="/js/select2.js"></script>
+    <link href="/css/select2.css" rel="stylesheet" />
+    {% block javascripts %}{% endblock %}
+    <!-- ===== Bootstrap CSS ===== -->
+    <link href="/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- ===== Plugin CSS ===== -->
+    <link href="/components/morrisjs/morris.css" rel="stylesheet">
+    <link href="/components/chartist-js/dist/chartist.min.css" rel="stylesheet">
+    <link href="/components/chartist-plugin-tooltip-master/dist/chartist-plugin-tooltip.css" rel="stylesheet">
+    <!-- ===== Animation CSS ===== -->
+    <link href="/css/animate.css" rel="stylesheet">
+    <!-- ===== Custom CSS ===== -->
+    <link href="/css/style.css" rel="stylesheet">
+    <!-- ===== Color CSS ===== -->
+    <link href="/css/colors/default.css" id="theme" rel="stylesheet">
+    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+    <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+    <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+</head>
+
+<body class="mini-sidebar">
+    <!-- ===== Main-Wrapper ===== -->
+    <div id="wrapper">
+        <div class="preloader">
+            <div class="cssload-speeding-wheel"></div>
+        </div>
+        <!-- ===== Top-Navigation ===== -->
+        <nav class="navbar navbar-default navbar-static-top m-b-0">
+            <div class="navbar-header">
+                <a class="navbar-toggle font-20 hidden-sm hidden-md hidden-lg " href="javascript:void(0)" data-toggle="collapse" data-target=".navbar-collapse">
+                    <i class="fa fa-bars"></i>
+                </a>
+                <div class="top-left-part">
+                    <a class="logo" href="{{ path('device.show') }}">
+                        <b>
+                            <img src="/images/logo.png" alt="home" />
+                        </b>
+                        <span>
+                            <img src="/images/logo-text.png" alt="homepage" class="dark-logo" />
+                        </span>
+                    </a>
+                </div>
+                <ul class="nav navbar-top-links navbar-left hidden-xs">
+                    <li>
+                        <a href="javascript:void(0)" class="sidebartoggler font-20 waves-effect waves-light"><i class="icon-arrow-left-circle"></i></a>
+                    </li>
+                    <li>
+                        {{ render(controller('App\\Controller\\SearchController::show')) }}
+                    </li>
+                </ul>
+                <ul class="nav navbar-top-links navbar-right pull-right">
+                    <li class="dropdown">
+                        <a class="dropdown-toggle waves-effect waves-light font-20" data-toggle="dropdown" href="javascript:void(0);">
+                            <i class="icon-user"> {{app.user.username}}</i>
+                        </a>
+                        <ul class="dropdown-menu mailbox animated bounceInDown">
+                            <li>
+                                <div class="drop-title">Профиль</div>
+                            </li>
+                            <li><a href="{{ path('fos_user_profile_edit')}}"><i class="fa fa-inbox"></i> {{'user.profile_edit'|trans}}</a></li>
+                            <li role="separator" class="divider"></li>
+                            <li><a href="{{ path('fos_user_security_logout')}}"><i class="fa fa-power-off"></i> {{'logout'|trans}}</a></li>
+                        </ul>
+                    </li>
+                </ul>
+            </div>
+        </nav>
+        <!-- ===== Top-Navigation-End ===== -->
+        <!-- ===== Left-Sidebar ===== -->
+        <aside class="sidebar">
+            <div class="scroll-sidebar">
+                <nav class="sidebar-nav">
+                    <ul id="side-menu">
+                        <li>
+                            <a class="waves-effect" href="{{ path('default')}}"  target="_blank" aria-expanded="false"><i class="icon-globe fa-fw"></i> <span class="hide-menu"> Перейти на сайт</span></a>
+                        </li>
+                        <li>
+                            <a class="waves-effect" href="{{ path('device.show')}}" aria-expanded="false"><i class="icon-screen-desktop fa-fw"></i> <span class="hide-menu"> {{'devicesAndServices'|trans}} </span></a>
+                        </li>
+                        <li>
+                            <a class="waves-effect" href="{{ path('client.list')}}" aria-expanded="false"><i class="icon-user-following fa-fw"></i> <span class="hide-menu"> {{'clients'|trans}} </span></a>
+                        </li>
+                        <li>
+                            <a class="waves-effect" href="{{ path('act.list')}}" aria-expanded="false"><i class="icon-notebook fa-fw"></i> <span class="hide-menu"> {{'acts'|trans}} <span class="label label-rounded label-primary pull-right">5</span></span></a>
+                        </li>
+                        <li>
+                            <a class="waves-effect" href="{{ path('template.list')}}" aria-expanded="false"><i class="icon-doc fa-fw"></i> <span class="hide-menu"> {{'templates'|trans}}<span class="label label-rounded label-danger pull-right">18</span></span></a>
+                        </li>
+
+                        {% if is_granted('ROLE_SETTING_EDIT') %}
+                        <li>
+                            <a class="waves-effect" href="{{ path('setting.edit')}}" aria-expanded="false"><i class="icon-settings fa-fw"></i> <span class="hide-menu"> {{'setting'|trans}} </span></a>
+                        </li>
+                        {% endif %}
+                        {% if is_granted('ROLE_SUPER_ADMIN') %}
+                        <li>
+                            <a class="waves-effect" href="{{ path('users.list')}}" aria-expanded="false"><i class="icon-people fa-fw"></i> <span class="hide-menu"> {{'users'|trans}}</span></a>
+                        </li>
+                        {% endif %}
+                    </ul>
+                </nav>
+            </div>
+        </aside>
+        <!-- ===== Left-Sidebar-End ===== -->
+        <!-- ===== Page-Content ===== -->
+        <div class="page-wrapper">
+          <div class="container-fluid" style="background:#fff;">
+             {% block body %}{% endblock %}
+           </div>
+            <footer class="footer t-a-c">
+                {{'now'|date("Y")}} 
+            </footer>
+        </div>
+        <!-- ===== Page-Content-End ===== -->
+    </div>
+    <!-- ===== Main-Wrapper-End ===== -->
+    <!-- ==============================
+        Required JS Files
+    =============================== -->
+    <!-- ===== jQuery ===== -->
+    <!-- ===== Bootstrap JavaScript ===== -->
+    <script src="/bootstrap/dist/js/bootstrap.min.js"></script>
+    <!-- ===== Slimscroll JavaScript ===== -->
+    <script src="/js/jquery.slimscroll.js"></script>
+    <!-- ===== Wave Effects JavaScript ===== -->
+    <script src="/js/waves.js"></script>
+    <!-- ===== Menu Plugin JavaScript ===== -->
+    <script src="/js/sidebarmenu.js"></script>
+    <!-- ===== Custom JavaScript ===== -->
+    <script src="/js/custom.js"></script>
+    <!-- ===== Plugin JS ===== -->
+    <script src="/components/raphael/raphael-min.js"></script>
+    <script src="/components/morrisjs/morris.js"></script>
+    <script src="/components/chartist-js/dist/chartist.min.js"></script>
+    <script src="/components/chartist-plugin-tooltip-master/dist/chartist-plugin-tooltip.min.js"></script>
+    <script src="/js/db4.js"></script>
+    <!-- ===== Style Switcher JS ===== -->
+    <script src="/components/styleswitcher/jQuery.style.switcher.js"></script>
+</body>
+</html>
+
+
+
+
+
+
+

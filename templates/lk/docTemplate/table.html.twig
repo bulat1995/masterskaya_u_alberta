@@ -1,0 +1,44 @@
+<table border=1 style="width:100%;border-collapse: collapse; border:3px solid #000;">
+    <tr>
+        {% for node in order %}
+            <td align="center" style="font-weight:bolder">
+                {% if node =="name" %}
+                    {{'catalog.name'|trans}}
+                {% elseif node == "count" %}
+                    {{'work.count'|trans}}
+                {% elseif node == "index" %}
+                    №
+                {% elseif node == "countName" %}
+                    Ед.
+                {% elseif node == "price" %}
+                    {{'work.price'|trans}}
+                {% elseif node == "fullPrice" %}
+                    {{'work.fullPrice'|trans}}
+                {% endif %}
+            </td>
+        {% endfor %}
+    </tr>
+{% for app in application %}
+{% set ind = loop.index %}
+    <tr>
+        {% for node in order %}
+            <td>
+                {% if node =="name" %}
+                    {{app.name}}
+                {% elseif node == "count" %}
+                    {{app.countOne}}
+                {% elseif node == "index" %}
+                    {{ind}}
+                {% elseif node == "countName" %}
+                    {{app.countName}}
+                {% elseif node == "price" %}
+                    <div style="text-align:right">{{app.priceOne|number_format(2, ',', '') }}</div>
+                {% elseif node == "fullPrice" %}
+                    <div style="text-align:right">{{app.fullPrice|number_format(2, ',', '')}}</div>
+                {% endif %}
+            </td>
+        {% endfor %}
+    </tr>
+{% endfor %}
+
+</table>

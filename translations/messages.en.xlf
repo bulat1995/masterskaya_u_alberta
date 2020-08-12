@@ -1,0 +1,482 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xliff xmlns="urn:oasis:names:tc:xliff:document:1.2" version="1.2">
+  <file source-language="ru" target-language="en" datatype="plaintext" original="file.ext">
+    <header>
+      <tool tool-id="symfony" tool-name="Symfony"/>
+    </header>
+    <body>
+      <trans-unit id="w5bZnVR" resname="new_device">
+        <source>new_device</source>
+        <target>New Device</target>
+      </trans-unit>
+      <trans-unit id="reFaEof" resname="devices">
+        <source>devices</source>
+        <target>devices</target>
+      </trans-unit>
+      <trans-unit id="z8uM4i6" resname="all_device">
+        <source>all_device</source>
+        <target>all_device</target>
+      </trans-unit>
+      <trans-unit id="BPiZbad" resname="user">
+        <source>user</source>
+        <target>user</target>
+      </trans-unit>
+      <trans-unit id="5PugSUc" resname="user.profile">
+        <source>user.profile</source>
+        <target>user.profile</target>
+      </trans-unit>
+      <trans-unit id="vQxH4zm" resname="user.edit">
+        <source>user.edit</source>
+        <target>user.edit</target>
+      </trans-unit>
+      <trans-unit id="TvuuOMC" resname="user.new">
+        <source>user.new</source>
+        <target>user.new</target>
+      </trans-unit>
+      <trans-unit id="Vrp.IAU" resname="user.all">
+        <source>user.all</source>
+        <target>user.all</target>
+      </trans-unit>
+      <trans-unit id="ACcM9j_" resname="logout">
+        <source>logout</source>
+        <target>logout</target>
+      </trans-unit>
+      <trans-unit id="fu1Uc_k" resname="device.edit">
+        <source>device.edit</source>
+        <target>device.edit</target>
+      </trans-unit>
+      <trans-unit id="JiEhxTc" resname="edit">
+        <source>edit</source>
+        <target>edit</target>
+      </trans-unit>
+      <trans-unit id="YZdZVQP" resname="delete">
+        <source>delete</source>
+        <target>delete</target>
+      </trans-unit>
+      <trans-unit id="y7guvsY" resname="authorization">
+        <source>authorization</source>
+        <target>authorization</target>
+      </trans-unit>
+      <trans-unit id="cMU.0rQ" resname="security.login.username">
+        <source>security.login.username</source>
+        <target>security.login.username</target>
+      </trans-unit>
+      <trans-unit id="N_kLMwm" resname="security.login.password">
+        <source>security.login.password</source>
+        <target>security.login.password</target>
+      </trans-unit>
+      <trans-unit id="8DSptbg" resname="security.login.remember_me">
+        <source>security.login.remember_me</source>
+        <target>security.login.remember_me</target>
+      </trans-unit>
+      <trans-unit id="tuAV77Z" resname="security.login.submit">
+        <source>security.login.submit</source>
+        <target>security.login.submit</target>
+      </trans-unit>
+      <trans-unit id="KcnDDgY" resname="registration">
+        <source>registration</source>
+        <target>registration</target>
+      </trans-unit>
+      <trans-unit id="hmX3IJA" resname="registration.submit">
+        <source>registration.submit</source>
+        <target>registration.submit</target>
+      </trans-unit>
+      <trans-unit id="_x2He8M" resname="user_profile">
+        <source>user_profile</source>
+        <target>user_profile</target>
+      </trans-unit>
+      <trans-unit id="f1ighji" resname="user_username">
+        <source>user_username</source>
+        <target>user_username</target>
+      </trans-unit>
+      <trans-unit id="Exlt7_2" resname="user_email">
+        <source>user_email</source>
+        <target>user_email</target>
+      </trans-unit>
+      <trans-unit id="N0RJjt1" resname="user_companyName">
+        <source>user_companyName</source>
+        <target>user_companyName</target>
+      </trans-unit>
+      <trans-unit id="E2jW5Su" resname="user_address">
+        <source>user_address</source>
+        <target>user_address</target>
+      </trans-unit>
+      <trans-unit id="DbpczkP" resname="user_directorName">
+        <source>user_directorName</source>
+        <target>user_directorName</target>
+      </trans-unit>
+      <trans-unit id="0QkLGeW" resname="user_bankInfo">
+        <source>user_bankInfo</source>
+        <target>user_bankInfo</target>
+      </trans-unit>
+      <trans-unit id="05hCC3j" resname="user_phones">
+        <source>user_phones</source>
+        <target>user_phones</target>
+      </trans-unit>
+      <trans-unit id="EOPULlG" resname="user_edit">
+        <source>user_edit</source>
+        <target>user_edit</target>
+      </trans-unit>
+      <trans-unit id="Wtjq5Gp" resname="profile.edit">
+        <source>profile.edit</source>
+        <target>profile.edit</target>
+      </trans-unit>
+      <trans-unit id="MAXmvnE" resname="device.create">
+        <source>device.create</source>
+        <target>device.create</target>
+      </trans-unit>
+      <trans-unit id="lPzrOP0" resname="catalog.create">
+        <source>catalog.create</source>
+        <target>catalog.create</target>
+      </trans-unit>
+      <trans-unit id="tLh6xps" resname="devicesAndServices">
+        <source>devicesAndServices</source>
+        <target>devicesAndServices</target>
+      </trans-unit>
+      <trans-unit id="j02QiBI" resname="clients">
+        <source>clients</source>
+        <target>clients</target>
+      </trans-unit>
+      <trans-unit id="CxnCeN3" resname="acts">
+        <source>acts</source>
+        <target>acts</target>
+      </trans-unit>
+      <trans-unit id="nGZBwfn" resname="templates">
+        <source>templates</source>
+        <target>templates</target>
+      </trans-unit>
+      <trans-unit id="7HK5Vmq" resname="setting">
+        <source>setting</source>
+        <target>setting</target>
+      </trans-unit>
+      <trans-unit id="VamM4zC" resname="catalogs">
+        <source>catalogs</source>
+        <target>catalogs</target>
+      </trans-unit>
+      <trans-unit id="gqNTf.D" resname="name">
+        <source>name</source>
+        <target>name</target>
+      </trans-unit>
+      <trans-unit id="aDtTH0H" resname="price">
+        <source>price</source>
+        <target>price</target>
+      </trans-unit>
+      <trans-unit id="Kw3N1AA" resname="actions">
+        <source>actions</source>
+        <target>actions</target>
+      </trans-unit>
+      <trans-unit id="fp5aww8" resname="add">
+        <source>add</source>
+        <target>add</target>
+      </trans-unit>
+      <trans-unit id="BRPXv6G" resname="currentLogo">
+        <source>currentLogo</source>
+        <target>currentLogo</target>
+      </trans-unit>
+      <trans-unit id="2R.M6FA" resname="catalog.add">
+        <source>catalog.add</source>
+        <target>catalog.add</target>
+      </trans-unit>
+      <trans-unit id="YrjoDZg" resname="editing">
+        <source>editing</source>
+        <target>editing</target>
+      </trans-unit>
+      <trans-unit id="to_SqQj" resname="client.new">
+        <source>client.new</source>
+        <target>client.new</target>
+      </trans-unit>
+      <trans-unit id="bOP7.OH" resname="client.edit">
+        <source>client.edit</source>
+        <target>client.edit</target>
+      </trans-unit>
+      <trans-unit id=".SebD_I" resname="client.create">
+        <source>client.create</source>
+        <target>client.create</target>
+      </trans-unit>
+      <trans-unit id="lI.mA.Y" resname="client">
+        <source>client</source>
+        <target>client</target>
+      </trans-unit>
+      <trans-unit id="GQDqtsA" resname="profile">
+        <source>profile</source>
+        <target>profile</target>
+      </trans-unit>
+      <trans-unit id="LBy.iE2" resname="client.companyName">
+        <source>client.companyName</source>
+        <target>client.companyName</target>
+      </trans-unit>
+      <trans-unit id="W9kgN1e" resname="client.driver">
+        <source>client.driver</source>
+        <target>client.driver</target>
+      </trans-unit>
+      <trans-unit id="HXU8q_A" resname="client.address">
+        <source>client.address</source>
+        <target>client.address</target>
+      </trans-unit>
+      <trans-unit id="V9LkwAU" resname="client.contacts">
+        <source>client.contacts</source>
+        <target>client.contacts</target>
+      </trans-unit>
+      <trans-unit id="1HbwRha" resname="client.bankInfo">
+        <source>client.bankInfo</source>
+        <target>client.bankInfo</target>
+      </trans-unit>
+      <trans-unit id="rHjAy67" resname="client.inn">
+        <source>client.inn</source>
+        <target>client.inn</target>
+      </trans-unit>
+      <trans-unit id="84FvE.k" resname="client.kpp">
+        <source>client.kpp</source>
+        <target>client.kpp</target>
+      </trans-unit>
+      <trans-unit id="ipU2H7N" resname="client.rss">
+        <source>client.rss</source>
+        <target>client.rss</target>
+      </trans-unit>
+      <trans-unit id="j96r.mU" resname="client.ks">
+        <source>client.ks</source>
+        <target>client.ks</target>
+      </trans-unit>
+      <trans-unit id="WjINlQI" resname="client.bik">
+        <source>client.bik</source>
+        <target>client.bik</target>
+      </trans-unit>
+      <trans-unit id="5ZMOYyE" resname="statistic">
+        <source>statistic</source>
+        <target>statistic</target>
+      </trans-unit>
+      <trans-unit id="nA5sqpz" resname="client.debtOther">
+        <source>client.debtOther</source>
+        <target>client.debtOther</target>
+      </trans-unit>
+      <trans-unit id="x2he.5K" resname="rubles.short">
+        <source>rubles.short</source>
+        <target>rubles.short</target>
+      </trans-unit>
+      <trans-unit id="VWvGsSO" resname="client.debtByDoc">
+        <source>client.debtByDoc</source>
+        <target>client.debtByDoc</target>
+      </trans-unit>
+      <trans-unit id="mxa0TQ4" resname="documents">
+        <source>documents</source>
+        <target>documents</target>
+      </trans-unit>
+      <trans-unit id="3EPoHT_" resname="document.create">
+        <source>document.create</source>
+        <target>document.create</target>
+      </trans-unit>
+      <trans-unit id="Q8wj_lK" resname="document">
+        <source>document</source>
+        <target>document</target>
+      </trans-unit>
+      <trans-unit id="OVGY7nC" resname="document.dateClosed">
+        <source>document.dateClosed</source>
+        <target>document.dateClosed</target>
+      </trans-unit>
+      <trans-unit id="_YYtpsJ" resname="document.price">
+        <source>document.price</source>
+        <target>document.price</target>
+      </trans-unit>
+      <trans-unit id="n4HHT1Q" resname="document.status">
+        <source>document.status</source>
+        <target>document.status</target>
+      </trans-unit>
+      <trans-unit id="dYV6RYm" resname="from">
+        <source>from</source>
+        <target>from</target>
+      </trans-unit>
+      <trans-unit id="hIPFB8y" resname="document.notPayed">
+        <source>document.notPayed</source>
+        <target>document.notPayed</target>
+      </trans-unit>
+      <trans-unit id="MpmIYfG" resname="document.payed">
+        <source>document.payed</source>
+        <target>document.payed</target>
+      </trans-unit>
+      <trans-unit id="jxlyiDz" resname="documentsIsEmpty">
+        <source>documentsIsEmpty</source>
+        <target>documentsIsEmpty</target>
+      </trans-unit>
+      <trans-unit id="FC66stc" resname="act.dateCreate">
+        <source>act.dateCreate</source>
+        <target>act.dateCreate</target>
+      </trans-unit>
+      <trans-unit id="4JwUCkk" resname="act.price">
+        <source>act.price</source>
+        <target>act.price</target>
+      </trans-unit>
+      <trans-unit id="ZS11_br" resname="debt">
+        <source>debt</source>
+        <target>debt</target>
+      </trans-unit>
+      <trans-unit id="LbapJEw" resname="readMore">
+        <source>readMore</source>
+        <target>readMore</target>
+      </trans-unit>
+      <trans-unit id="e_teLb8" resname="act.new">
+        <source>act.new</source>
+        <target>act.new</target>
+      </trans-unit>
+      <trans-unit id="YXvjUK4" resname="actFor">
+        <source>actFor</source>
+        <target>actFor</target>
+      </trans-unit>
+      <trans-unit id="_D8Hvhb" resname="act">
+        <source>act</source>
+        <target>act</target>
+      </trans-unit>
+      <trans-unit id="skoO1DW" resname="client.ruler">
+        <source>client.ruler</source>
+        <target>client.ruler</target>
+      </trans-unit>
+      <trans-unit id="5CC2czF" resname="catalog.name">
+        <source>catalog.name</source>
+        <target>catalog.name</target>
+      </trans-unit>
+      <trans-unit id="qoSgbOO" resname="catalog.price">
+        <source>catalog.price</source>
+        <target>catalog.price</target>
+      </trans-unit>
+      <trans-unit id="vc9MY7p" resname="work.count">
+        <source>work.count</source>
+        <target>work.count</target>
+      </trans-unit>
+      <trans-unit id="Qb1Cy9y" resname="work.fullPrice">
+        <source>work.fullPrice</source>
+        <target>work.fullPrice</target>
+      </trans-unit>
+      <trans-unit id="EPIjr27" resname="work.isPayed">
+        <source>work.isPayed</source>
+        <target>work.isPayed</target>
+      </trans-unit>
+      <trans-unit id="ohkTp7J" resname="work.payed">
+        <source>work.payed</source>
+        <target>work.payed</target>
+      </trans-unit>
+      <trans-unit id="MhlLbC8" resname="work.notPayed">
+        <source>work.notPayed</source>
+        <target>work.notPayed</target>
+      </trans-unit>
+      <trans-unit id="oFRLw6D" resname="act.edit">
+        <source>act.edit</source>
+        <target>act.edit</target>
+      </trans-unit>
+      <trans-unit id="9SByvLd" resname="act.createButton">
+        <source>act.createButton</source>
+        <target>act.createButton</target>
+      </trans-unit>
+      <trans-unit id="XBVvDfu" resname="qrCodeGenerate">
+        <source>qrCodeGenerate</source>
+        <target>qrCodeGenerate</target>
+      </trans-unit>
+      <trans-unit id="G0gCulb" resname="empty_folder">
+        <source>empty_folder</source>
+        <target>empty_folder</target>
+      </trans-unit>
+      <trans-unit id="Bg_DJSm" resname="qrCode.forAct">
+        <source>qrCode.forAct</source>
+        <target>qrCode.forAct</target>
+      </trans-unit>
+      <trans-unit id="HF9URHq" resname="qrCodeUrl">
+        <source>qrCodeUrl</source>
+        <target>qrCodeUrl</target>
+      </trans-unit>
+      <trans-unit id="VX.9QAd" resname="qrCodeWidth">
+        <source>qrCodeWidth</source>
+        <target>qrCodeWidth</target>
+      </trans-unit>
+      <trans-unit id="FX3KkuQ" resname="save">
+        <source>save</source>
+        <target>save</target>
+      </trans-unit>
+      <trans-unit id="rIO4y5i" resname="document.new">
+        <source>document.new</source>
+        <target>document.new</target>
+      </trans-unit>
+      <trans-unit id="TjP8YOd" resname="document.toPayed">
+        <source>document.toPayed</source>
+        <target>document.toPayed</target>
+      </trans-unit>
+      <trans-unit id="aP9j_4L" resname="download">
+        <source>download</source>
+        <target>download</target>
+      </trans-unit>
+      <trans-unit id="uu2DFiO" resname="watch">
+        <source>watch</source>
+        <target>watch</target>
+      </trans-unit>
+      <trans-unit id="zvQEkq_" resname="document.dateOpen">
+        <source>document.dateOpen</source>
+        <target>document.dateOpen</target>
+      </trans-unit>
+      <trans-unit id="RAnNvgD" resname="worksShort">
+        <source>worksShort</source>
+        <target>worksShort</target>
+      </trans-unit>
+      <trans-unit id="AOE_169" resname="work">
+        <source>work</source>
+        <target>work</target>
+      </trans-unit>
+      <trans-unit id="v5mEwkG" resname="work.price">
+        <source>work.price</source>
+        <target>work.price</target>
+      </trans-unit>
+      <trans-unit id="XytC4dX" resname="worksMore">
+        <source>worksMore</source>
+        <target>worksMore</target>
+      </trans-unit>
+      <trans-unit id="m2mNgb4" resname="work.dateCreate">
+        <source>work.dateCreate</source>
+        <target>work.dateCreate</target>
+      </trans-unit>
+      <trans-unit id="msnDYbV" resname="document.edit">
+        <source>document.edit</source>
+        <target>document.edit</target>
+      </trans-unit>
+      <trans-unit id="QjaS6Ad" resname="document.createButton">
+        <source>document.createButton</source>
+        <target>document.createButton</target>
+      </trans-unit>
+      <trans-unit id="CBMkhhr" resname="template.new">
+        <source>template.new</source>
+        <target>template.new</target>
+      </trans-unit>
+      <trans-unit id="NlxFwXQ" resname="template.psevdo">
+        <source>template.psevdo</source>
+        <target>template.psevdo</target>
+      </trans-unit>
+      <trans-unit id="kBbhJBp" resname="template.create">
+        <source>template.create</source>
+        <target>template.create</target>
+      </trans-unit>
+      <trans-unit id="XN4PEpj" resname="template">
+        <source>template</source>
+        <target>template</target>
+      </trans-unit>
+      <trans-unit id="H_KJIFk" resname="application">
+        <source>application</source>
+        <target>application</target>
+      </trans-unit>
+      <trans-unit id="rJLlWhC" resname="psevdo">
+        <source>psevdo</source>
+        <target>psevdo</target>
+      </trans-unit>
+      <trans-unit id="A4RoUYr" resname="my">
+        <source>my</source>
+        <target>my</target>
+      </trans-unit>
+      <trans-unit id="jeO4Xzf" resname="search.by">
+        <source>search.by</source>
+        <target>search.by</target>
+      </trans-unit>
+      <trans-unit id="JjpNvkF" resname="device">
+        <source>device</source>
+        <target>device</target>
+      </trans-unit>
+      <trans-unit id="JBkykGe" resname="search">
+        <source>search</source>
+        <target>search</target>
+      </trans-unit>
+    </body>
+  </file>
+</xliff>

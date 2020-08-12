@@ -1,0 +1,102 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}
+{{'search.by'|trans}}: {{searchQuery}}
+{% endblock %}
+{% block body %}
+<h2>{{'search'|trans}}:</h2>
+
+<hr>
+{{form_start(form)}}
+<div class="row">
+    <div class="col-lg-10">
+        {{form_widget(form)}}
+    </div>
+    <div class="col-lg-2">
+        <button type="submit" class="btn btn-primary btn-outline">{{ 'search'|trans }}</button>
+    </div>
+</div>
+{{form_end(form)}}
+
+{% if (clients|length + devices|length +catalogs|length) ==0 %}
+
+
+  <h4>Ничего не найдено</h4>
+
+{% endif %}
+{% if clients|length > 0%}
+<h3 class="mt-4">{{'clients'|trans}}</h3>
+<div class="list-group">
+{% for client in clients %}
+      <a  href="{{ path('client.show',{id: client.id}) }}" class="list-group-item list-group-item-action">
+        {{ client.companyName }}
+      </a>
+      {% endfor %}
+</div>
+{% endif %}
+
+
+
+{%if devices is not empty %}
+
+<h3 class="mt-4">{{'devices'|trans}}</h3>
+{% for device in devices %}
+<a  href="{{ path('device.show',{id: device.id}) }}">
+    <div class="media mt-3 pt-3" style="border-top:1px solid #eee;">
+    <a href="{{ path('device.show',{id: device.id}) }}">
+    <img src={% if device.logo %}"{{ asset(device_web_folder ~ '/' ~ device.logo.filename) }}"{% else%}"/uploads/no.png"{% endif %} class="mr-3" style="max-height:100px;max-width:100px;float:left;margin-right:20px;">
+    </a>
+      <div class="media-body">
+        <h3 class="mt-0"><a href="{{ path('device.show',{id: device.id}) }}">{{ device.name }}</a></h3>
+            <p class="pull-left">Устройств: {{(device.rgt -device.lft - 1 )/2}} шт.<br> Услуги: {{device.catalogs|length}} шт.</p>
+            <div class="btn-group pull-right" role="group" aria-label="Basic example">
+            </div>
+      </div>
+    </div>
+</a>
+{% endfor %}
+
+{% endif %}
+
+
+
+
+
+
+
+{% if catalogs is empty %}
+
+{% else%}
+
+<div style="margin:1% 0;">
+    <font size="5">{{'catalogs'|trans}}:
+    </font>
+</div>
+
+<table class="table text-center">
+<tr>
+    <th class="active text-left">{{'name'|trans}}</th>
+    <th class="active text-center">{{'price'|trans}}:</th>
+    <th class="active text-center">{{'device'|trans}}:</th>
+    <th class="active text-center" width="200">{{'actions'|trans}}</th>
+</tr>
+{% for catalog in catalogs %}
+    <tr>
+        <td align="left"><font size="4">{{ catalog.name }}</font></td>
+        <td><font size="4">{{ catalog.price }} ₽</font></td>
+        <td><font size="4">
+            <a href="{{ path('device.show',{id: catalog.device.id}) }}">{{catalog.device.name }}</a>
+        </font></td>
+        <td align="center">
+             {% if is_granted('ROLE_CATALOG_EDIT') %}
+            <a class="btn btn-outline-primary" href="{{ path('catalog.edit',{id: catalog.id}) }}">
+                {{'edit'|trans}}
+            </a>
+            {% endif %}
+        </td>
+    </tr>
+{% endfor %}
+</table>
+{% endif %}
+
+{% endblock %}

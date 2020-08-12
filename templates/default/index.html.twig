@@ -1,0 +1,468 @@
+<!DOCTYPE html>
+<html class="no-js" lang="zxx">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="x-ua-compatible" content="ie=edge">
+        <title>Мастерская  "У Альберта"</title>
+        <meta name="description" content="">
+        <link rel="apple-touch-icon" href="apple-touch-icon.png">
+		<link rel="stylesheet" href="/css/font-awesome.min.css">
+        <link rel="stylesheet" href="assets/css/bootstrap.min.css">
+        <link rel="stylesheet" href="assets/css/magnific-popup.css">
+        <link rel="stylesheet" href="assets/css/owl.carousel.min.css">
+        <link rel="stylesheet" href="assets/css/font-awesome.min.css">
+        <link rel="stylesheet" href="assets/css/flaticon.css">
+        <link rel="stylesheet" href="assets/css/ionicons.min.css">
+        <link rel="stylesheet" href="assets/css/headline.css">
+        <link rel="stylesheet" href="assets/css/animate.min.css">
+        <link rel="stylesheet" href="assets/css/material-design-iconic-font.min.css">
+        <link rel="stylesheet" href="assets/css/meanmenu.css">
+        <link rel="stylesheet" href="assets/css/Pe-icon-7-stroke.css">
+        <link rel="stylesheet" href="assets/css/bundle.css">
+        <link rel="stylesheet" href="assets/css/style.css">
+        <link rel="stylesheet" href="assets/css/responsive.css">
+        <script src="assets/js/vendor/modernizr-2.8.3.min.js"></script>
+        <link rel="shorcut icon" href="/images/logo.png" type="image/png">
+	</head>
+	<body>
+		<header class="">
+			<!-- main-menu-area-start -->
+			<div id="header-sticky" class="main-menu-area menu-style-1 white-header">
+				<div class="container md-container">
+					<div class="row">
+						<div class="col-md-2 col-sm-4">
+							<div class="logo">
+								<a href="{{path('default')}}"><img src="assets/img/logo/1.png" alt="" /></a>
+							</div>
+						</div>
+						<div class="col-md-7 col-sm-8">
+
+							<div class="header-left">
+								<div class="header-text">
+									<div class="header-icon">
+										<i class="fa fa-phone" style="color:#555"></i>
+										<i class="paint-roller" style="color:#555"></i>
+									</div>
+									<div class="header-info">
+										<span class="phone">{{setting.sitePhone}}</span>
+										<span class="gmail">{{setting.siteEmail}}</span>
+									</div>
+								</div>
+								<div class="header-text">
+									<div class="header-icon">
+										<i class="zmdi zmdi-pin" style="color:#555"></i>
+									</div>
+									<div class="header-info">
+										<span class="address">{{setting.siteAddress|nl2br}}</span>
+									</div>
+								</div>
+							</div>
+
+						</div>
+						<div class="col-md-3 hidden-xs hidden-sm" >
+							<div class="main-menu float-right" style="float:right;">
+								<nav>
+									<ul>
+										<li class="active"><a href="{{ path('device.show')}}"><i class="flaticon-login-icon"></i> Личный кабинет</a></li>
+									</ul>
+								</nav>
+							</div>
+						</div>
+						<div class="col-xs-12"><div class="mobile-menu"></div></div>
+					</div>
+				</div>
+			</div>
+			<!-- main-menu-area-end -->
+
+		</header>
+		<!-- header-top-area-start -->
+		<!-- slider-area-start -->
+		<div class="slider-area">
+			<div class="slider-wrapper ptb-250" style="background-image:url(assets/img/slider/1.jpg);">
+				<div class="container">
+					<div class="row">
+						<div class="col-md-8 col-lg-6 pr-0">
+							<div class="slider-text" >
+								<h2 class="cd-headline loading-bar">Мы можем починить
+									<span class="cd-words-wrapper">
+										<b class="is-visible">компьютеры</b>
+										<b>ноутбуки</b>
+										<b>принтеры</b>
+										<b>мониторы</b>
+									</span>
+								</h2>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+		<!-- slider-area-end -->
+		<!-- what-we-do-start -->
+		<div class="what-we-do ptb-120">
+			<div class="container">
+			<div class="section-title mb-60 text-center">
+					<h4>Мастерская "У Альберта"</h4>
+					<h2>Чем мы занимаемся</h2>
+				</div>
+				<div class="row">
+					<div class="col-md-6 p-r">
+						<div>
+							<!-- Nav tabs -->
+							<ul class="offer-tab" role="tablist">
+								<li role="presentation" class="active">
+									<a href="#home" aria-controls="home" role="tab" data-toggle="tab">
+										<div class="offer-list">
+											<div class="offer-icon">
+												<i class="flaticon-pc-icon"></i>
+											</div>
+											<div class="offer-text">
+												<span>Настройка Компьютеров</span>
+											</div>
+										</div>
+									</a>
+								</li>
+								<li role="presentation">
+									<a href="#profile" aria-controls="home" role="tab" data-toggle="tab">
+										<div class="offer-list">
+											<div class="offer-icon">
+												<i class="flaticon-plus-icon"></i>
+											</div>
+											<div class="offer-text">
+												<span>Ремонт компьютеров</span>
+											</div>
+										</div>
+									</a>
+								</li>
+								<li role="presentation">
+									<a href="#messages" aria-controls="home" role="tab" data-toggle="tab">
+										<div class="offer-list">
+											<div class="offer-icon">
+												<i class="flaticon-printer-icon"></i>
+											</div>
+											<div class="offer-text">
+												<span>Ремонт принтеров</span>
+											</div>
+										</div>
+									</a>
+								</li>
+								<li role="presentation">
+									<a href="#settings" aria-controls="home" role="tab" data-toggle="tab">
+										<div class="offer-list">
+											<div class="offer-icon">
+												<i class="flaticon-monitor-icon"></i>
+											</div>
+											<div class="offer-text">
+												<span>Ремонт мониторов</span>
+											</div>
+										</div>
+									</a>
+								</li>
+							</ul>
+						</div>
+					</div>
+					<div class="col-md-6 p-t">
+						  <!-- Tab panes -->
+						<div class="tab-content">
+							<div role="tabpanel" class="tab-pane active" id="home">
+								<div class="offer-wrapper" style="background-image:url(assets/img/work/1.jpg); background-size:40%;">
+									<div class="offer-content">
+										<p>Предлагаем вам воспользоваться услугами по настройке компьютеров в нашей мастерской. </p>
+										<ul class="tab-menu">
+											<li> Оптимизация OC семейства Windows</li>
+											<li> Восстановление Windows</li>
+											<li> Установка OC семейства Linux</li>
+											<li> Установка программ </li>
+											<li> Восстановление данных с накопителей</li>
+										</ul>
+										<a href="#contact">Связаться с нами</a>
+									</div>
+								</div>
+							</div>
+							<div role="tabpanel" class="tab-pane" id="profile">
+								<div class="offer-wrapper" style="background-image:url(assets/img/work/2.jpg); background-size:40%;">
+									<div class="offer-content">
+										<p>Предлагаем вам воспользоваться услугами по ремонту компьютеров в нашей мастерской.</p>
+										<ul class="tab-menu">
+											<li> Перепрошивка BIOS</li>
+											<li> Замена или ремонт Материнской платы</li>
+											<li> Замена или ремонт Блока питания</li>
+											<li> Замена или ремонт видеокарты</li>
+											<li> Замена Процессора</li>
+											<li> Замена Накопителя данных</li>
+											<li> Замена или Ремонт Оперативной памяти</li>
+											<li> Ускорение работы компьютера путем увеличения мощности компонентов</li>
+										</ul>
+										<a href="#contact">Связаться с нами</a>
+									</div>
+								</div>
+							</div>
+							<div role="tabpanel" class="tab-pane" id="messages">
+								<div class="offer-wrapper" style="background-image:url(assets/img/work/3.jpg); background-size:40%">
+									<div class="offer-content">
+										<p>Предлагаем вам воспользоваться услугами по обслуживанию офисной техники в нашей мастерской.</p>
+										<ul class="tab-menu">
+											<li> Перепрошивка принтера</li>
+											<li> Настройка принтера</li>
+											<li> Замена фотовала</li>
+											<li> Заправка картриджа</li>
+											<li> Прошивка чипа картриджа</li>
+											<li> Замена термоленты</li>
+										</ul>
+										<a href="#contact">Связаться с нами</a>
+									</div>
+								</div>
+							</div>
+							<div role="tabpanel" class="tab-pane" id="settings">
+								<div class="offer-wrapper" style="background-image:url(assets/img/work/4.jpg); background-size:50%;">
+									<div class="offer-content">
+										<p>Предлагаем вам воспользоваться услугами по ремонту мониторов в нашей мастерской.</p>
+										<ul class="tab-menu">
+											<li> Замена или ремонт T-CON модуля</li>
+											<li> Замена или ремонт mainbord</li>
+											<li> Замена или ремонт блока PSU</li>
+											<li> Замена или ремонт подсветки</li>
+											<li> Замена разбитой матрицы</li>
+										</ul>
+										<a href="#contact">Связаться с нами</a>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+		<!-- what-we-do-end -->
+		<!-- home-service-start -->
+		<div class="home-service-area gray-bg">
+			<div class="col-md-6 p-0 col-xs-12">
+				<div class="home-service-wrapper ptb-120" style="background-image:url(assets/img/repair.jpg)">
+					<div class="home-content">
+						<h3>Есть вопросы? <br> Мы всегда готовы ответить </h3>
+						<div class="content">
+							<h4>Свяжитесь с нами :</h4>
+							<p>{{setting.sitePhone}} <br> {{setting.siteEmail}}</p>
+						</div>
+					</div>
+
+				</div>
+			</div>
+			<div class="col-md-6 p-0 col-xs-12">
+				<div class="home-area-right">
+					<div class="home-section">
+						<h3>Делаем упор на качество</h3>
+						<div class="homes-info">
+							<p>Неважно какое устройство необходимо отремонтировать. Будь оно старое, поцарапанное или бывшее в других сервисных центрах, мы все равно будем стараться приводить ее в изначальное состояние</p>
+							<br>
+							<p>Для удачного ремонта нам нужно знать:</p>
+						</div>
+					</div>
+					<div class="row">
+						<div class="col-md-6 col-sm-6">
+							<div class="home-wrapper mb-20">
+								<div class="home-text">
+									<p>Что случилось с устройством?</p>
+								</div>
+							</div>
+						</div>
+						<div class="col-md-6 col-sm-6">
+							<div class="home-wrapper mb-20">
+								<div class="home-text">
+									<p> Что делали с устройством перед тем как оно сломалось? </p>
+								</div>
+							</div>
+						</div>
+						<div class="col-md-6 col-sm-6 mb-20">
+							<div class="home-wrapper">
+								<div class="home-text">
+									<p>Было ли устройство в сервисном центре? </p>
+								</div>
+							</div>
+						</div>
+						<div class="col-md-6 col-sm-6 mb-20">
+							<div class="home-wrapper">
+								<div class="home-text">
+									<p>Пытались ли вы сами произвести ремонт? </p>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+		<!-- home-service-end -->
+
+		<!-- counter-area-start -->
+		<div class="counter-area pt-120 pb-85" style="">
+			<div class="container" >
+				<div class="row">
+					<div class="col-md-4 col-sm-6">
+						<div class="counter-wrapper mb-30">
+							<div class="counter-img">
+								<img src="assets/img/counter/1.png" alt="" />
+							</div>
+							<div class="counter-text">
+								<h2 class="counter">{{setting.clientCount}}</h2>
+							</div>
+							<span class="customers">Количество клиентов</span>
+						</div>
+					</div>
+
+					<div class="col-md-4 col-sm-6">
+						<div class="counter-wrapper mb-30">
+							<div class="counter-img">
+								<img src="assets/img/counter/3.png" alt="" />
+							</div>
+							<div class="counter-text">
+								<h2 class="counter">{{'now'|date("Y")-setting.startWorkYear}}</h2>
+							</div>
+							<span class="customers">Сколько лет мы работаем</span>
+						</div>
+					</div>
+					<div class="col-md-4 col-sm-6">
+						<div class="counter-wrapper mb-30">
+							<div class="counter-img">
+								<img src="assets/img/counter/4.png" alt="" />
+							</div>
+							<div class="counter-text">
+								<h2 class="counter">
+								{{(('now'|date("d")+('now'|date("m")-1)*30)+(('now'|date("Y")-setting.startWorkYear)*365))*3}}</h2>
+							</div>
+							<span class="customers">Отремонтировано устройств</span>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+		<!-- counter-area-end -->
+
+
+
+
+
+
+		<!-- contact-3-area-start -->
+		<a name="contact"></a>
+		<div class="contact-3-area contact-2 contact-3 pt-25 pb-5" >
+			<div class="container">
+				<div class="row">
+					<div class="col-md-4">
+						<div class="contact-3-right-wrapper mb-30">
+							<div class="contact-3-right-info">
+								<h3>Наши контакты</h3>
+							</div>
+
+							<div class="contact-3-address">
+								<div class="contact-3-icon">
+									<i class="zmdi zmdi-pin"></i>
+								</div>
+								<div class="address-text">
+									<span class="location">Адрес :</span>
+									<span class="USA"> {{setting.siteAddress}}</span>
+								</div>
+							</div>
+
+							<div class="contact-3-address">
+								<div class="contact-3-icon">
+									<i class="zmdi zmdi-phone"></i>
+								</div>
+								<div class="address-text">
+									<span class="location">Телефон :</span>
+									<span class="USA">{{setting.sitePhone}}</span>
+								</div>
+							</div>
+							<div class="contact-3-address">
+								<div class="contact-3-icon">
+									<i class="fa fa-clock-o"></i>
+								</div>
+								<div class="address-text">
+									<span class="location">График Работы :</span>
+									<span class="USA"> {{setting.schedule}}</span>
+								</div>
+							</div>
+							<div class="contact-3-address">
+								<div class="contact-3-icon">
+									<i class="zmdi zmdi-email"></i>
+								</div>
+								<div class="address-text">
+									<span class="location">Электронная почта :</span>
+									<span class="USA">{{setting.siteEmail}}</span>
+								</div>
+							</div>
+						</div>
+					</div>
+					<div class="col-md-8">
+						<div class="contact-wrapper-3 mb-30">
+								<div id="map"></div>
+							</div>
+							<!-- map-end -->
+
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+		<!-- contact-3-area-end -->
+
+
+
+
+		<!-- all js here -->
+        <script src="assets/js/vendor/jquery-1.12.0.min.js"></script>
+        <script src="assets/js/bootstrap.min.js"></script>
+        <script src="assets/js/headline.js"></script>
+        <script src="assets/js/jquery.magnific-popup.min.js"></script>
+        <script src="assets/js/jquery.scrollUp.min.js"></script>
+        <script src="assets/js/isotope.pkgd.min.js"></script>
+        <script src="assets/js/imagesloaded.pkgd.min.js"></script>
+        <script src="assets/js/jquery.counterup.min.js"></script>
+        <script src="assets/js/waypoints.min.js"></script>
+        <script src="assets/js/jquery.parallax-1.1.3.js"></script>
+        <script src="assets/js/owl.carousel.min.js"></script>
+        <script src="assets/js/jquery.meanmenu.js"></script>
+        <script src="assets/js/ajax-mail.js"></script>
+        <script src="assets/js/plugins.js"></script>
+        <script src="assets/js/main.js"></script>
+
+
+        <!-- Google Map js -->
+        <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAJ97zN_MClQ8BnmJJOCY165S2QEYvbIis"></script>
+		<script>
+            // When the window has finished loading create our google map below
+            google.maps.event.addDomListener(window, 'load', init);
+
+            function init() {
+                // Basic options for a simple Google Map
+                // For more options see: https://developers.google.com/maps/documentation/javascript/reference#MapOptions
+                var mapOptions = {
+                    // How zoomed in you want the map to start at (always required)
+                    zoom: 11,
+
+                    scrollwheel: false,
+
+                    // The latitude and longitude to center the map (always required)
+                    center: new google.maps.LatLng(23.822349, 90.365420), // New York
+
+                    // How you would like to style the map.
+                    // This is where you would paste any style found on Snazzy Maps.
+					styles: [{"featureType":"water","elementType":"geometry","stylers":[{"color":"#e9e9e9"},{"lightness":17}]},{"featureType":"landscape","elementType":"geometry","stylers":[{"color":"#f5f5f5"},{"lightness":20}]},{"featureType":"road.highway","elementType":"geometry.fill","stylers":[{"color":"#ffffff"},{"lightness":17}]},{"featureType":"road.highway","elementType":"geometry.stroke","stylers":[{"color":"#ffffff"},{"lightness":29},{"weight":0.2}]},{"featureType":"road.arterial","elementType":"geometry","stylers":[{"color":"#ffffff"},{"lightness":18}]},{"featureType":"road.local","elementType":"geometry","stylers":[{"color":"#ffffff"},{"lightness":16}]},{"featureType":"poi","elementType":"geometry","stylers":[{"color":"#f5f5f5"},{"lightness":21}]},{"featureType":"poi.park","elementType":"geometry","stylers":[{"color":"#dedede"},{"lightness":21}]},{"elementType":"labels.text.stroke","stylers":[{"visibility":"on"},{"color":"#ffffff"},{"lightness":16}]},{"elementType":"labels.text.fill","stylers":[{"saturation":36},{"color":"#333333"},{"lightness":40}]},{"elementType":"labels.icon","stylers":[{"visibility":"off"}]},{"featureType":"transit","elementType":"geometry","stylers":[{"color":"#f2f2f2"},{"lightness":19}]},{"featureType":"administrative","elementType":"geometry.fill","stylers":[{"color":"#fefefe"},{"lightness":20}]},{"featureType":"administrative","elementType":"geometry.stroke","stylers":[{"color":"#fefefe"},{"lightness":17},{"weight":1.2}]}]
+                };
+
+                // Get the HTML DOM element that will contain your map
+                // We are using a div with id="map" seen below in the <body>
+                var mapElement = document.getElementById('map');
+
+                // Create the Google Map using our element and options defined above
+                var map = new google.maps.Map(mapElement, mapOptions);
+
+                // Let's also add a marker while we're at it
+                var marker = new google.maps.Marker({
+                    position: new google.maps.LatLng(40.6700, -73.9400),
+                    map: map,
+                    title: 'Snazzy!'
+                });
+            }
+		</script>
+    </body>
+</html>

@@ -1,0 +1,18 @@
+{% extends 'base.html.twig' %}
+
+
+{% block body %}
+
+{% form_theme form 'bootstrap_4_layout.html.twig' %}
+
+{{ form_start(form) }}
+<h2>{{'user_edit'|trans}}</h2>
+	{{ form_errors(form) }}
+	{{ form_widget(form) }}
+    <div>
+        <input type="submit" class="btn btn-primary" value="{{ 'edit'|trans }}" />
+    </div>
+{{ form_end(form) }}
+
+
+{% endblock %}

@@ -1,0 +1,45 @@
+{% extends 'base.html.twig' %}
+{% block title %}{{'device.edit'|trans}}{% endblock %}
+
+
+{% block body %}
+	<nav aria-label="breadcrumb">
+	  <ol class="breadcrumb">
+	    <li class="breadcrumb-item"><a href="{{ path('device.show') }}">{{'devices'|trans}}</a></li>
+		{% for node in tree %}
+		    <li class="breadcrumb-item"><a href="{{ path('device.show',{id: node.id}) }}">{{ node.name }}</a></li>
+		{% endfor %}
+		    <li class="breadcrumb-item active" aria-current="page"> {{'device.edit'|trans}}</li>
+	  </ol>
+	</nav>
+    <h2 class="pb-4">{{ 'device.edit'|trans }} </h2>
+    {{ form_start(form) }}
+    {{ form_row(form.name)}}
+    {{ form_row(form.category)|replace({"&amp;": "&"})|raw }}
+    {{form_widget(form)}}
+    {% if form.vars.data.logo %}
+        <div class="form-group row">
+            <label class="col-form-label col-sm-2" for="device_logo">{{'currentLogo'|trans}}</label>
+            <div class="col-sm-10">
+                <div class="custom-file">
+                   <img src="{{ asset(device_web_folder ~ '/' ~ form.vars.data.logo.filename) }}" height="100"></label>
+                </div>
+            </div>
+        </div>
+    {% endif %}
+        <div class="form-group">
+            <div class="pull-right">
+                <button type="submit" class="btn  btn-outline btn-primary">{{ 'edit'|trans }}</button>
+            </div>
+        </div>
+    {{ form_end(form) }}
+
+	{% if is_granted('ROLE_DEVICE_DELETE') %}
+		{{ form_start(deleteForm, {'attr': {'class': 'pull-right ', 'style':'margin-right:1%'}}) }}
+		{{ form_widget(deleteForm) }}
+		<button type="submit" class="btn  btn-outline btn-danger" onclick="return confirm('Вы действительно хотите удалить данное устройство')">
+		    {{ 'delete'|trans }}
+		</button>
+		{{ form_end(deleteForm) }}
+	{% endif %}
+{% endblock %}

@@ -1,0 +1,116 @@
+{% extends 'base.html.twig' %}
+{% block title %}{{'client'|trans}} {{client.companyName}}{% endblock %}
+
+{% block body %}
+	<nav aria-label="breadcrumb">
+	  <ol class="breadcrumb">
+	    <li class="breadcrumb-item"><a href="{{ path('client.list') }}">{{'clients'|trans}}</a></li>
+		<li class="breadcrumb-item active" aria-current="page">{{ client.companyName }}</li>
+	  </ol>
+	</nav>
+   
+        <font size="5" class="pull-left">   {{client.companyName}}</font>
+		{% if is_granted('ROLE_CLIENT_EDIT') %}
+		<a  href="{{ path('client.edit',{id: client.id }) }}" class="pull-right">
+			 <button type="button" class="btn btn-success btn-outline"> {{'client.edit'|trans}}</button>
+		</a>
+		{% endif %}
+		<div class="clearfix"></div>
+    
+
+	<ul class="nav customtab nav-tabs" role="tablist">
+        <li role="presentation" class="active"><a href="#profile" aria-controls="home" role="tab" data-toggle="tab" aria-expanded="false"><span class="visible-xs"><i class="ti-home"></i></span><span class="hidden-xs"> {{'profile'|trans}}</span></a></li>
+        <li role="presentation" class=""><a href="#bankinfo" aria-controls="profile" role="tab" data-toggle="tab" aria-expanded="true"><span class="visible-xs"><i class="ti-user"></i></span> <span class="hidden-xs">{{'client.bankInfo'|trans}}</span></a></li>
+        <li role="presentation" class=""><a href="#statistic" aria-controls="profile" role="tab" data-toggle="tab" aria-expanded="true"><span class="visible-xs"><i class="ti-info-alt"></i></span> <span class="hidden-xs">{{'statistic'|trans}}</span></a></li>
+    </ul>
+    <!-- Tab panes -->
+    <div class="tab-content">
+        <div role="tabpanel" class="tab-pane fade active in" id="profile">
+			  <table  class="table" cellpadding="4" cellspacing="4">
+				  <tr><td>{{'client.companyName'|trans }}:</td><td>{{ client.companyName }}</td></tr>
+				  <tr><td>{{'client.driver'|trans }}:</td><td>{{ client.positionName }} {{ client.bossName }}</td></tr>
+				  <tr><td>{{'client.address'|trans }}:</td><td colspan=7>{{ client.address }}</td></tr>
+				  <tr><td>	{{'client.contacts'|trans }}:</td><td colspan=7>{{ client.contacts|nl2br }}</td></tr>
+			  </table>
+            <div class="clearfix"></div>
+        </div>
+        <div role="tabpanel" class="tab-pane fade " id="bankinfo">
+			<table  class="table" cellpadding="4">
+				  <tr><td>{{'client.inn'|trans }}:</td><td>{{ client.inn }}</td></tr>
+				  <tr><td>{{'client.kpp'|trans }}:</td><td>{{ client.kpp }}</td></tr>
+				  <tr><td>{{'client.rss'|trans }}:</td><td>{{ client.rss }}</td></tr>
+				  <tr><td>{{'client.ks'|trans }}:</td><td>{{ client.ks }}</td></tr>
+				  <tr><td>{{'client.bik'|trans }}:</td><td>{{ client.bik }}</td></tr>
+				  <tr><td>	{{'client.bankInfo'|trans }}:</td><td  colspan=7>{{ client.bankInfo|nl2br }}</td></tr>
+			  </table>
+            <div class="clearfix"></div>
+        </div>
+        <div role="tabpanel" class="tab-pane fade " id="statistic">
+	  		  <table  class="table" cellpadding="4">
+	  			  <tr><td>{{'client.debtOther'|trans }}:</td><td><span class="badge badge-light ">{{ client.debtOther }} {{'rubles.short'|trans}}</span></td></tr>
+	  			  <tr><td> {{'client.debtByDoc'|trans }}:</td><td><span class="badge badge-light">{{ client.debtByDoc }} {{'rubles.short'|trans}}</span></td></tr>
+	  		  </table>
+            <div class="clearfix"></div>
+        </div>
+    </div>
+
+	   <div style="margin-top:1%">
+				<div class="row">
+					<div class="col-lg-6">
+						<h3> {{'documents'|trans}} </h3>
+					</div>
+					{% if is_granted('ROLE_DOCUMENT_CREATE') %}
+					<div class="col-lg-4">
+						{{ form_start(document) }}
+						{{form_widget(document.docTemplate)}}
+					</div>
+					<div class="col-lg-2">
+							<button type="submit" class="btn btn-primary btn-outline pull-right">{{'document.create'|trans}}</button>
+					</div>
+					{{ form_end(document) }}
+					{% endif %}
+				</div>
+		</div>
+  {%if client.documents|length > 0 %}
+  <div class="table-responsive">
+	<table cellpadding="4" class="table table-striped">
+		<thead>
+			<tr>
+				<th>{{'document'|trans}} </th>
+				<th>{{'document.dateClosed'|trans}} </th>
+				<th>{{'document.price'|trans}} </th>
+				<th>{{'document.status'|trans}} </th>
+			</tr>
+		</thead>
+	{% for document in client.documents %}
+		<tr>
+			<td >
+			<a  href="{{ path('document.show',{id: document.id }) }}">
+				№ {{ document.number}} {{ 'from'|trans }} {{document.dateOpen|date("d.m.Y")}}
+			</a>
+			</td>
+
+			<td >  {{document.dateClosed|date("d.m.Y")}}</td>
+			<td >  {{ document.price}} {{ 'rubles.short'|trans }}  </td>
+			<td >
+			    {% if  not document.isPayed %}
+			          <span class="btn btn-danger">{{ 'document.notPayed'|trans }}</span>
+			    {% else %}
+			          <span class="btn btn-success">{{ 'document.payed'|trans }} <span class="badge badge-light">{{document.datePayed|date("d.m.Y")}}</span></span>
+			    {% endif %}
+			</td>
+		</tr>
+   {% endfor %}
+</table>
+</div>
+	{% else %}
+		<div class="alert alert-info" role="alert">
+		{{'documentsIsEmpty'|trans}}
+		</div>
+   {% endif %}
+
+
+
+
+
+{% endblock %}

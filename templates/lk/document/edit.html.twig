@@ -1,0 +1,16 @@
+{% extends 'base.html.twig' %}
+{% block title %}{{'document.edit'|trans}}
+{% endblock %}
+{% block body %}
+    {% include 'document/javascript.js.twig' %}
+    <nav aria-label="breadcrumb">
+      <ol class="breadcrumb">
+        <li class="breadcrumb-item"><a href="{{ path('client.list') }}">{{'clients'|trans}}</a></li>
+        <li class="breadcrumb-item"><a href="{{ path('client.show',{'id':document.client.id}) }}">{{document.client.companyName}}</a></li>
+        <li class="breadcrumb-item active ">{{'document.edit'|trans}}</li>
+      </ol>
+    </nav>
+    <h2 class="mb-4">{{'document.edit'|trans}} </h2>
+
+    {% include 'document/_form.html.twig' %}
+{% endblock %}

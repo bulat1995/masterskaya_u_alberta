@@ -1,0 +1,163 @@
+{% extends 'base.html.twig' %}
+{% block title %} {{'psevdo'|trans}} {% endblock %}
+
+{% block body %}
+   <nav aria-label="breadcrumb">
+     <ol class="breadcrumb">
+       <li class="breadcrumb-item"><a href="{{ path('template.list') }}">{{'templates'|trans}}</a></li>
+       <li class="breadcrumb-item active">{{'psevdo'|trans}}</li>
+     </ol>
+ </nav>
+     <h3 class="mt-4 mb-3"> {{'psevdo'|trans}} </h3>
+
+
+
+    <ul class="nav customtab nav-tabs" role="tablist">
+        <li role="presentation" class="active"><a href="#home1" aria-controls="home" role="tab" data-toggle="tab" aria-expanded="false"><span class="visible-xs"><i class="ti-home"></i></span><span class="hidden-xs"> Документ</span></a></li>
+        <li role="presentation" class=""><a href="#profile1" aria-controls="profile" role="tab" data-toggle="tab" aria-expanded="true"><span class="visible-xs"><i class="ti-user"></i></span> <span class="hidden-xs">Приложение</span></a></li>
+        <li role="presentation" class=""><a href="#client" aria-controls="profile" role="tab" data-toggle="tab" aria-expanded="true"><span class="visible-xs"><i class="ti-user"></i></span> <span class="hidden-xs">Клиент</span></a></li>
+        <li role="presentation" class=""><a href="#my" aria-controls="profile" role="tab" data-toggle="tab" aria-expanded="true"><span class="visible-xs"><i class="ti-user"></i></span> <span class="hidden-xs">Поставщик</span></a></li>
+        <li role="presentation" class=""><a href="#string" aria-controls="profile" role="tab" data-toggle="tab" aria-expanded="true"><span class="visible-xs"><i class="ti-user"></i></span> <span class="hidden-xs">Работа со строками</span></a></li>
+        <li role="presentation" class=""><a href="#date" aria-controls="profile" role="tab" data-toggle="tab" aria-expanded="true"><span class="visible-xs"><i class="ti-user"></i></span> <span class="hidden-xs">Формирование даты</span></a></li>
+    </ul>
+    <!-- Tab panes -->
+    <div class="tab-content">
+        <div role="tabpanel" class="tab-pane fade active in" id="home1">
+           <table class="table table-responsive table-stripped">
+              <tr><th>Псевдотег</th><th>Описание</th><th>Пример</th></tr>
+              <tr><td style="font-weight:bolder;">&#123;&#123;document.id&#125;&#125;</td><td>Идентификатор документа (десятичное число в адресной строке)</td><td> от 1 до &infin;</td></tr>
+              <tr><td style="font-weight:bolder;">&#123;&#123;document.number&#125;&#125;</td><td>Номер документа</td><td>15-2020</td></tr>
+              <tr><td style="font-weight:bolder;">&#123;&#123;document.dateOpen|date("d.m.Y")&#125;&#125;</td><td>Дата начала действия документа</td><td>{{'now'|date("d.m.Y")}}</td></tr>
+              <tr><td style="font-weight:bolder;">&#123;&#123;document.dateClosed|date("d.m.Y")&#125;&#125;</td><td>Дата формирования контракта</td><td>{{'now'|date("d.m.Y")}}</td></tr>
+              <tr><td style="font-weight:bolder;">&#123;&#123;document.works&#125;&#125;</td><td>Массив актов принадлежащих данному документу</td><td>[]</td></tr>
+              <tr><td style="font-weight:bolder;">&#123;&#123;document.price&#125;&#125;</td><td>Стоимость документа цифрами</td><td>1000</td></tr>
+              <tr><td style="font-weight:bolder;">&#123;&#123;document.priceText&#125;&#125;</td><td>Стоимость документа прописью</td><td>Одна тысяча рублей 00 копеек</td></tr>
+          </table>
+            <div class="clearfix"></div>
+        </div>
+        <div role="tabpanel" class="tab-pane fade " id="profile1">
+           <div class="alert alert-info" role="alert">
+              Настройка таблицы производится командой <b>&#123;% set order=[ index , name , count , countName , fullPrice , price ] %&#125;</b>
+            </div>
+
+          <div class="alert alert-info" role="alert">
+              вывод таблицы производится командой <b>&#123;% include @table/table.html.twig %&#125;</b>
+            </div>
+
+            <p>Команда set приказывает системе использовать массив order для</p>
+
+            <ol>
+              <li>отображения колонок приложения определенных в массиве [внутри квадратных скобок]&nbsp;</li>
+              <li>порядка отображения данных в таблице</li>
+            </ol>
+
+            <p>Обратите внимание на то что, внутри массива, указатели колонок  разделены&nbsp;запятой между собой. В&nbsp; начале и конце массива запятые не указываются</p>
+          <table class="table table-responsive table-stripped">
+              <tr><th>Псевдотег</th><th>Описание</th><th>Пример</th></tr>
+              <tr><td style="font-weight:bolder;">index</td><td>Порядковый номер сроки</td><td>1</td></tr>
+              <tr><td style="font-weight:bolder;">name</td><td>Название услуги </td><td>Заправка картриджа</td></tr>
+              <tr><td style="font-weight:bolder;">count<td>Количество выполненной услуги</td><td>3</td></tr>
+              <tr><td style="font-weight:bolder;">countName</td><td>название единицы услуги</td><td>шт.</td></tr>
+              <tr><td style="font-weight:bolder;">price</td><td>Стоимость одной услуги</td><td>15,00</td></tr>
+              <tr><td style="font-weight:bolder;">fullPrice</td><td>Сумма услуги</td><td>45,00</td></tr>
+          </table>
+            <div class="clearfix"></div>
+        </div>
+
+
+<div role="tabpanel" class="tab-pane fade " id="client">
+        <table class="table table-responsive table-stripped">
+              <tr><th>Псевдотег</th><th>Описание</th><th>Пример</th></tr>
+              <tr><td style="font-weight:bolder;">&#123;&#123;client.id&#125;&#125;</td><td>Идентификатор клиента </td><td> от 1 до &infin;</td></tr>
+              <tr><td style="font-weight:bolder;">&#123;&#123;client.companyName&#125;&#125;</td><td>Название организации</td><td>Администрация муниципального района Салаватский район</td></tr>
+              <tr><td style="font-weight:bolder;">&#123;&#123;client.address&#125;&#125;</td><td>Адрес организации</td><td>РБ. Салаватский район с. Малояз ул. Коммунистическая д.64</td></tr>
+              <tr><td style="font-weight:bolder;">&#123;&#123;client.bossName&#125;&#125;</td><td>ФИО руководителя организации</td><td>Кашапов Марс Фарахович</td></tr>
+              <tr><td style="font-weight:bolder;">&#123;&#123;client.secondName&#125;&#125;</td><td>Фамилия руководителя организации</td><td>Кашапов</td></tr>
+              <tr><td style="font-weight:bolder;">&#123;&#123;client.firstName&#125;&#125;</td><td>Имя руководителя организации</td><td>Марс</td></tr>
+              <tr><td style="font-weight:bolder;">&#123;&#123;client.middleName&#125;&#125;</td><td>Отчество руководителя организации</td><td> Фарахович</td></tr>
+              <tr><td style="font-weight:bolder;">&#123;&#123;client.positionName&#125;&#125;</td><td>Должность руководителя организации</td><td>глава администрации</td></tr>
+              <tr><td style="font-weight:bolder;">&#123;&#123;client.inFace&#125;&#125;</td><td>В лице руководителя</td><td>Главы Администрации Кашапова Марса Фараховича</td></tr>
+              <tr><td style="font-weight:bolder;">&#123;&#123;client.contacts&#125;&#125;</td><td>Контактные данные</td><td>тел. 3477728001</td></tr>
+              <tr><td style="font-weight:bolder;">&#123;&#123;client.bankInfo&#125;&#125;</td><td>Банковские данные</td><td>//-//-//-//</td></tr>
+              <tr><td style="font-weight:bolder;">&#123;&#123;client.docName&#125;&#125;</td><td>Организация действует на основании</td><td>Устава</td></tr>
+              <tr><td style="font-weight:bolder;">&#123;&#123;client.inn&#125;&#125;</td><td>ИНН</td><td>//-//-//-//</td></tr>
+              <tr><td style="font-weight:bolder;">&#123;&#123;client.kpp&#125;&#125;</td><td>КПП</td><td>//-//-//-//</td></tr>
+              <tr><td style="font-weight:bolder;">&#123;&#123;client.rss&#125;&#125;</td><td>РСС</td><td>//-//-//-//</td></tr>
+              <tr><td style="font-weight:bolder;">&#123;&#123;client.bik&#125;&#125;</td><td>БИК</td><td>//-//-//-//</td></tr>
+              <tr><td style="font-weight:bolder;">&#123;&#123;client.ks&#125;&#125;</td><td>КС</td><td>//-//-//-//</td></tr>
+          </table>
+
+
+            <div class="clearfix"></div>
+        </div>
+
+
+        <div role="tabpanel" class="tab-pane fade " id="my">
+
+                    <table class="table table-responsive table-stripped">
+                      <tr><th>Псевдотег</th><th>Описание</th><th>Пример</th></tr>
+                      <tr><td style="font-weight:bolder;">&#123;&#123;my.companyName&#125;&#125;</td><td>Название организации</td><td>{{my.companyName}}</td></tr>
+                      <tr><td style="font-weight:bolder;">&#123;&#123;my.address&#125;&#125;</td><td>Адрес организации</td><td>{{my.address}}</td></tr>
+                      <tr><td style="font-weight:bolder;">&#123;&#123;my.bossName&#125;&#125;</td><td>ФИО руководителя организации</td><td>{{my.bossName}}</td></tr>
+                      <tr><td style="font-weight:bolder;">&#123;&#123;my.secondName&#125;&#125;</td><td>Фамилия руководителя организации</td><td>{{my.secondName}}</td></tr>
+                      <tr><td style="font-weight:bolder;">&#123;&#123;my.firstName&#125;&#125;</td><td>Имя руководителя организации</td><td>{{my.firstName}}</td></tr>
+                      <tr><td style="font-weight:bolder;">&#123;&#123;my.middleName&#125;&#125;</td><td>Отчество руководителя организации</td><td>{{my.middleName}}</td></tr>
+                      <tr><td style="font-weight:bolder;">&#123;&#123;my.positionName&#125;&#125;</td><td>Должность руководителя организации</td><td>{{my.positionName}}</td></tr>
+                      <tr><td style="font-weight:bolder;">&#123;&#123;my.positionNameShort&#125;&#125;</td><td>Должность руководителя организации (коротко) </td><td>{{my.positionNameShort}}</td></tr>
+                      <tr><td style="font-weight:bolder;">&#123;&#123;my.inFace&#125;&#125;</td><td>В лице руководителя</td><td>{{my.inFace}}</td></tr>
+                      <tr><td style="font-weight:bolder;">&#123;&#123;my.contacts&#125;&#125;</td><td>Контактные данные</td><td>{{my.contacts}}</td></tr>
+                      <tr><td style="font-weight:bolder;">&#123;&#123;my.bankInfo&#125;&#125;</td><td>Банковские данные</td><td>{{my.bankInfo}}</td></tr>
+                      <tr><td style="font-weight:bolder;">&#123;&#123;my.docName&#125;&#125;</td><td>Организация действует на основании</td><td>{{my.docName}}</td></tr>
+                      <tr><td style="font-weight:bolder;">&#123;&#123;my.inn&#125;&#125;</td><td>ИНН</td><td>{{my.inn}}</td></tr>
+                      <tr><td style="font-weight:bolder;">&#123;&#123;my.kpp&#125;&#125;</td><td>КПП</td><td>{{my.kpp}}</td></tr>
+                      <tr><td style="font-weight:bolder;">&#123;&#123;my.rss&#125;&#125;</td><td>РСС</td><td>{{my.rss}}</td></tr>
+                      <tr><td style="font-weight:bolder;">&#123;&#123;my.bik&#125;&#125;</td><td>БИК</td><td>{{my.bik}}</td></tr>
+                      <tr><td style="font-weight:bolder;">&#123;&#123;my.ks&#125;&#125;</td><td>КС</td><td>{{my.ks}}</td></tr>
+                  </table>
+
+            <div class="clearfix"></div>
+        </div>
+
+
+         <div role="tabpanel" class="tab-pane fade " id="string">
+             <div class="alert alert-info" role="alert">
+              Работа со строками на основе <b>&#123;&#123;client.bossName&#125;&#125;</b>
+            </div>
+
+          <table class="table table-responsive table-stripped">
+              <tr><th>Псевдотег</th><th>Описание</th><th>Пример</th></tr>
+              <tr><td style="font-weight:bolder;">&#123;&#123;client.bossName|capitalize&#125;&#125;</td><td>Первый символ заглавный а остальные строчные</td><td>{{'Кашапов Марс Фарахович'|capitalize}}</td></tr>
+              <tr><td style="font-weight:bolder;">&#123;&#123;client.bossName|title&#125;&#125;</td><td>Первый символ каждого слова заглавный а остальные строчные</td><td>{{'Кашапов Марс Фарахович'|title}}</td></tr>
+              <tr><td style="font-weight:bolder;">&#123;&#123;client.bossName|upper&#125;&#125;</td><td>Все заглавным</td><td>{{'Кашапов Марс Фарахович'|upper}}</td></tr>
+              <tr><td style="font-weight:bolder;">&#123;&#123;client.bossName|lower&#125;&#125;</td><td>Все строчные</td><td>{{'Кашапов Марс Фарахович'|lower}}</td></tr>
+              <tr><td style="font-weight:bolder;">&#123;&#123;client.bossName|first&#125;&#125;</td><td>Первая буква</td><td>{{'Кашапов Марс Фарахович'|first}}</td></tr>
+              <tr><td style="font-weight:bolder;">&#123;&#123;client.bossName|reverse&#125;&#125;</td><td>АПОЖ</td><td>{{'Кашапов Марс Фарахович'|reverse}}</td></tr>
+              <tr><td style="font-weight:bolder;">&#123;&#123;client.bossName|nl2br&#125;&#125;</td><td>Если при заполнении текстового поля вы вводили несколько строк,а отображается все одной строкой, тогда используйте вот это</td><td>{{"Кашапов\r\n Марс\r\n Фарахович\r\n"|nl2br}}</td></tr>
+
+              </table>
+            <div class="clearfix"></div>
+        </div>
+
+        <div role="tabpanel" class="tab-pane fade " id="date">
+          <div class="alert alert-info" role="alert">
+              Формирование даты на примере &#123;&#123;document.dateOpen&#125;&#125;
+            </div>
+
+          <table class="table table-responsive table-stripped">
+              <tr><th>Псевдотег</th><th>Описание</th><th>Пример</th></tr>
+              <tr><td style="font-weight:bolder;">&#123;&#123;document.dateOpen|date("d.m.Y")&#125;&#125;</td><td>Дата начала действия документа</td><td>{{'now'|date("d.m.Y")}}</td></tr>
+              <tr><td style="font-weight:bolder;">&#123;&#123;document.dateOpen|date("d")&#125;&#125;</td><td>День начала действия документа [с ведущим нулем]</td><td>{{'now'|date("d")}}</td></tr>
+              <tr><td style="font-weight:bolder;">&#123;&#123;document.dateOpen|date("j")&#125;&#125;</td><td>День начала действия документа [без ведущего нуля]</td><td>{{'now'|date("j")}}</td></tr>
+              <tr><td style="font-weight:bolder;">&#123;&#123;document.dateOpen|date("m")&#125;&#125;</td><td>месяц начала действия документа [с ведущим нулем]</td><td>{{'now'|date("m")}}</td></tr>
+              <tr><td style="font-weight:bolder;">&#123;&#123;document.dateOpen|date("n")&#125;&#125;</td><td>месяц начала действия документа [без ведущего нуля]</td><td>{{'now'|date("n")}}</td></tr>
+              <tr><td style="font-weight:bolder;">&#123;&#123;document.dateOpen|date("Y")&#125;&#125;</td><td>Год начала действия документа</td><td>{{'now'|date("Y")}}</td></tr>
+
+              </table>
+
+            <div class="clearfix"></div>
+        </div>
+
+
+    </div>
+
+{% endblock %}

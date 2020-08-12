@@ -1,0 +1,105 @@
+{% extends 'base.html.twig' %}
+{% block title %}{% if device is empty %}{{'devices'|trans}}{% else %}{{device.name}}{% endif %}{% endblock %}
+
+{% block body %}
+{% include 'breadMenu.html.twig' %}
+    <div class="row">
+		<div class="col-md-6">
+            <font size="5">
+                {% if device is empty %}
+                    {{'devices'|trans}}:
+                {% else %}
+                <img src={% if device.logo %}"{{ asset(device_web_folder ~ '/' ~ device.logo.filename) }}"{% else%}"/uploads/no.png"{% endif %} class="mr-3" style="max-height:48px;max-width:48px;">
+                {{device.name}}:
+            {% endif %}
+            </font>
+			</div>
+            <div class="col-md-6">
+				<div class="pull-right">
+                {% if device is not empty and is_granted('ROLE_DEVICE_EDIT') %}
+                 <a href="{{ path('device.edit',{id: device.id})}}" class="btn  btn-outline btn-primary" role="button">
+                    {{'edit'|trans}}
+                </a>
+                {% endif %}
+				{% if is_granted('ROLE_DEVICE_CREATE') %}
+				<a  href="{{ path('device.create') }}" class="btn  btn-outline btn  btn-outline btn-success ">
+                    {{'device.create'|trans}}
+                </a>
+				{% endif %}
+                {% if catalogs is empty %}
+
+				{% if is_granted('ROLE_CATALOG_CREATE') %}
+                <a class="btn  btn-outline btn-success" href="{{ path('catalog.create', {id: id})}}">
+                    {{'catalog.create'|trans}}
+                </a>
+                {% endif %}
+                {% endif %}
+            </div>
+            </div>
+    </div>
+		<div class="mb-4">
+    {% if devices is empty %}
+       {% include 'block_empty.html.twig' %}
+    {% else%}
+<style>
+.media .btn{opacity:0;transition: 0.4s;}
+.media:hover .btn{opacity:1;}
+</style>
+    {% for device in devices %}
+    <a  href="{{ path('device.show',{id: device.id}) }}">
+        <div class="media mt-3 pt-3" style="border-top:1px solid #eee;">
+        <a href="{{ path('device.show',{id: device.id}) }}">
+        <img src={% if device.logo %}"{{ asset(device_web_folder ~ '/' ~ device.logo.filename) }}"{% else%}"/uploads/no.png"{% endif %}  style="max-height:100px;max-width:100px;float:left;margin-right:20px;">
+        </a>
+          <div class="media-body">
+            <h3 class="mt-0"><a href="{{ path('device.show',{id: device.id}) }}">{{ device.name }}</a></h3>
+                <p class="pull-left">Устройств: {{(device.rgt -device.lft - 1 )/2}} шт.<br> Услуги: {{device.catalogs|length}} шт.</p>
+                <div class="btn-group pull-right" role="group">
+
+					{% if is_granted('ROLE_DEVICE_EDIT') %}
+                   <a href="{{ path('device.edit',{id: device.id}) }}">
+                        <button type="button" class="btn  btn-outline btn-primary">{{'edit'|trans}}</button>
+                    </a>
+					{% endif %}
+                </div>
+          </div>
+        </div>
+    </a>
+    {% endfor %}
+    {% endif %}
+		</div>
+    {% if catalogs is empty %}
+    {% else%}
+    <div class="mt-4 pb-3">
+        <font size="5">{{'catalogs'|trans}}:
+
+			{% if is_granted('ROLE_CATALOG_CREATE') %}
+            <a class="btn  btn-outline btn-success pull-right" href="{{ path('catalog.create', {id: id})}}">
+                           {{'catalog.create'|trans}}
+            </a>
+			{%endif%}
+        </font>
+    </div>
+    <table class="table text-center">
+    <tr>
+        <th class="active text-left">{{'name'|trans}}</th>
+        <th class="active text-center">{{'price'|trans}}:</th>
+        <th class="active text-center" width="200">{{'actions'|trans}}</th>
+    </tr>
+    {% for catalog in catalogs %}
+        <tr>
+            <td align="left"><font size="4">{{ catalog.name }}</font></td>
+            <td><font size="4">{{ catalog.price }} ₽</font></td>
+            <td align="center">
+
+				{% if is_granted('ROLE_CATALOG_EDIT') %}
+                <a class="btn  btn-outline btn-outline-primary" href="{{ path('catalog.edit',{id: catalog.id}) }}">
+                    {{'edit'|trans}}
+                </a>
+				{%endif%}
+            </td>
+        </tr>
+    {% endfor %}
+    </table>
+    {% endif %}
+{% endblock %}

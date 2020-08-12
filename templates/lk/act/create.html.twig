@@ -1,0 +1,18 @@
+{% extends 'base.html.twig' %}
+{% block title %}{{'act.new'|trans}}
+{% endblock %}
+
+{% block javascripts %}
+    {% include 'lk/act/javascript.html.twig' %}
+{% endblock %}
+{% form_theme form.worksForAct with ['lk/forms/actEdit.html.twig'] %}
+{% block body %}
+    <nav aria-label="breadcrumb">
+      <ol class="breadcrumb">
+        <li class="breadcrumb-item"><a href="{{ path('act.list') }}">{{'acts'|trans}}</a></li>
+        <li class="breadcrumb-item active">{{'act.new'|trans}}</li>
+      </ol>
+    </nav>
+    <h2 class="mb-4">{{'act.new'|trans}} </h2>
+   {% include 'lk/act/_form.html.twig' %}
+{% endblock %}

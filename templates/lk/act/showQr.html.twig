@@ -1,0 +1,59 @@
+{% extends 'base.html.twig' %}
+{% block title %} {{'qrCode.forAct'|trans}} {{act.client.companyName}} {% endblock %}
+
+{% block body %}
+<script>
+function changeSize(obj)
+{
+    $('.qrCodeImg').each(function(index){
+        this.style="margin:1mm;width:"+obj.value+"mm";
+    });
+}
+</script>
+    <nav aria-label="breadcrumb">
+      <ol class="breadcrumb">
+        <li class="breadcrumb-item"><a href="{{ path('act.list') }}">{{'acts'|trans}}</a></li>
+        <li class="breadcrumb-item active">{{'qrCode.forAct'|trans}} {{act.client.companyName}} </li>
+      </ol>
+    </nav>
+    <h2 class="mb-4">{{'qrCode.forAct'|trans}}</h2>
+    <table>
+      <tr><td>{{ 'client.companyName'|trans }}</td><td>{{ act.client.companyName}}</td></tr>
+      <tr><td>{{ 'client.ruler'|trans }}</td><td>{{ act.client.positionName}} {{ act.client.bossName}}</td></tr>
+      <tr><td>{{ 'qrCodeUrl'|trans }}</td><td>{{ setting.qrCode}}</td></tr>
+      <tr><td>{{ 'qrCodeWidth'|trans }}</td><td><input type="number" value="{{setting.qrCodeWidth}}" min="5" class="form-control" style="width:100px" onchange="changeSize(this)"></td></tr>
+    </table>
+
+    <h2 class="mt-4">{{ 'catalogs'|trans}}</h2>
+    <table class="table table-striped">
+      <thead>
+        <tr>
+          <th>{{ 'catalog.name'|trans}} </th>
+          <th>{{ 'catalog.price'|trans}}.</th>
+          <th> {{ 'work.count'|trans}}</th>
+          <th> {{ 'work.fullPrice'|trans}}</th>
+        </tr>
+      </thead>
+      <tbody>
+    {% for work in act.works %}
+    	<tr>
+    		<td>{{ work.catalog.name}} </td>
+    		<td>{{ work.price}} {{ 'rubles.short'|trans}}.</td>
+    		<td> {{ work.count}} {{ work.catalog.countName}}</td>
+            <td> {{ work.fullPrice}} {{ 'rubles.short'|trans}}</td>
+        </tr>
+    {% endfor %}
+    </tbody>
+  	</table>
+    <div class="float-right">
+      <h4><b>{{ 'act.price'|trans}}:</b>  {{act.price}}  {{ 'rubles.short'|trans}}</h4>
+    </div>
+    <div class="clearfix"></div>
+    <h3>Qr Код</h3>
+
+    <div align="center">
+    {% for i in 1..63 %}
+    <img class="qrCodeImg" style="margin:1mm;width:{{setting.qrCodeWidth}}mm" src="https://barcode.tec-it.com/barcode.ashx?data={{setting.qrCode}}{{command}}&code=MobileQRCode&multiplebarcodes=false&translate-esc=false&unit=Fit&dpi=96&imagetype=Jpg&rotation=0&color=%23000000&bgcolor=%23ffffff&qunit=Px&quiet=0&eclevel=M">
+    {% endfor %}
+    </div>
+{% endblock %}

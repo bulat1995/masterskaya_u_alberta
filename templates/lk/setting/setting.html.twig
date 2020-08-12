@@ -1,0 +1,55 @@
+{% extends 'base.html.twig' %}
+{% block title %}{{'setting'|trans}}{% endblock %}
+{% block body %}
+            <font size="5">{{'setting'|trans}}:</font>
+    {% form_theme form with [
+    'bootstrap_4_layout.html.twig',
+] %}
+{% for message in app.flashes('success') %}
+    <div class="alert alert-success" role="alert">
+        {{ message }}
+    </div>
+{% endfor %}
+
+
+{{ form_start(form) }}
+    <ul class="nav customtab nav-tabs" role="tablist">
+        <li role="presentation" class="active"><a href="#home1" aria-controls="home" role="tab" data-toggle="tab" aria-expanded="false"><span class="visible-xs"><i class="ti-home"></i></span><span class="hidden-xs"> Qr Code</span></a></li>
+        <li role="presentation" class=""><a href="#profile1" aria-controls="profile" role="tab" data-toggle="tab" aria-expanded="true"><span class="visible-xs"><i class="ti-user"></i></span> <span class="hidden-xs">Данные поставщика</span></a></li>
+        <li role="presentation" class=""><a href="#site" aria-controls="profile" role="tab" data-toggle="tab" aria-expanded="true"><span class="visible-xs"><i class="ti-user"></i></span> <span class="hidden-xs">Информация на сайте</span></a></li>
+    </ul>
+    <!-- Tab panes -->
+    <div class="tab-content">
+        <div role="tabpanel" class="tab-pane fade active in" id="home1">
+            
+                   <div class="form-group">
+                    {{form_row(form.qrCode)}}
+                    </div>
+                    <div class="form-group">
+                    {{form_row(form.qrCodeWidth)}}
+                    </div>
+            <div class="clearfix"></div>
+        </div>
+        <div role="tabpanel" class="tab-pane fade " id="site">
+           <div class="form-group">{{form_row(form.siteEmail)}}</div>
+           <div class="form-group">{{form_row(form.sitePhone)}}</div>
+           <div class="form-group">{{form_row(form.siteAddress)}}</div>
+           <div class="form-group">{{form_row(form.schedule)}}</div>
+           <div class="form-group">{{form_row(form.siteKeywords)}}</div>
+           <div class="form-group">{{form_row(form.startWorkYear)}}</div>
+           <div class="form-group">{{form_row(form.clientCount)}}</div>
+            <div class="clearfix"></div>
+        </div>
+
+        <div role="tabpanel" class="tab-pane fade " id="profile1">
+           {{form_widget(form)}}
+            <div class="clearfix"></div>
+        </div>
+    </div>
+        <div class="form-group mt-2">
+            <div class="pull-right">
+                <button type="submit" class="btn  btn-outline btn-primary">{{ 'save'|trans }}</button>
+            </div>
+        </div>
+    {{ form_end(form) }}
+{% endblock %}

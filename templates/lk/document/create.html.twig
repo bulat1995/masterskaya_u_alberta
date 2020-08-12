@@ -1,0 +1,15 @@
+{% extends 'base.html.twig' %}
+{% block title %}{{'document.new'|trans}}
+{% endblock %}
+{% block body %}
+    {% include 'lk/document/javascript.js.twig' %}
+    <nav aria-label="breadcrumb">
+      <ol class="breadcrumb">
+        <li class="breadcrumb-item"><a href="{{ path('client.list') }}">{{'clients'|trans}}</a></li>
+        <li class="breadcrumb-item"><a href="{{ path('client.show',{'id':document.client.id}) }}">{{document.client.companyName}}</a></li>
+        <li class="breadcrumb-item active ">{{'document.create'|trans}}</li>
+      </ol>
+    </nav>
+    <h2 class="mb-4">{{'document.create'|trans}} </h2>
+    {% include 'lk/document/_form.html.twig' %}
+{% endblock %}

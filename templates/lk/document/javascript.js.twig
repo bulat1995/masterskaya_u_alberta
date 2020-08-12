@@ -1,0 +1,19 @@
+<script type="text/javascript">
+onload=function(){
+    calcul();
+    document.getElementById("document_works").onchange=function(){
+        calcul();
+    }
+}
+function calcul()
+{
+    var price=0, e = document.getElementById("document_works");
+    var count=e.options.length;
+    for( var i=0; i<count; i++){
+        if(e.options[i].selected)
+        price+=parseFloat(e.options[i].getAttribute("attr-price"));
+    }
+    document.getElementById("fullPrice").innerHTML=price;
+}
+
+</script>

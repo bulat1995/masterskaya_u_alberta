@@ -1,0 +1,21 @@
+ {{ form_start(form) }}
+      <div class="row mb-5">
+        <div class="col-lg-3">
+          {{ 'client.companyName'|trans }}
+        </div>
+        <div class="col-lg-9">
+          {{ form_widget(form.client) }}
+          {{ form_errors(form.client) }}
+        </div>
+      </div>
+    {{ form_widget(form.worksForAct) }}
+    {{ form_errors(form) }}
+      <div class="pull-right mt-2 mb-2">
+        <h5><b>{{ 'act.price'|trans}}:</b>  <span id="fullPrice">{{act.price}}</span>   {{ 'rubles.short'|trans}}</h5>
+      </div>
+      <div class="clearfix"></div>
+        <div class="form-group">
+                <button type="submit" class="btn  btn-outline btn-success pull-right">{{'act.createButton'|trans}}</button>
+                <button type="button" class="btn  btn-outline btn-success pull-left" onclick="codeGenerate()">{{'qrCodeGenerate'|trans}}</button>
+        </div>
+    {{ form_end(form) }}

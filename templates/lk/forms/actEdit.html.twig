@@ -1,0 +1,38 @@
+{% macro service_template(fields) %}
+    <tr class="js-genus-scientist-item">
+        <td>{{ form_widget(fields.catalog) }}{{form_errors(fields.catalog) }}</td>
+        <td>{{form_widget(fields.price) }} {{form_errors(fields.price) }}</td>
+        <td>{{form_widget(fields.count) }} {{form_errors(fields.count) }}</td>
+        <td>{{form_widget(fields.fullPrice) }}</td>
+        <td>
+            <a href="#" class="js-remove-scientist btn  btn-outline btn-danger">{{ 'delete'|trans}}</a>
+        </td>
+    </tr>
+{% endmacro %}
+
+{% block _act_worksForAct_widget %}
+    <div style="margin:2% 0 ;">
+        <h3 class="pull-left">{{ 'catalogs'|trans}}</h3>
+        <button type="button" class="add-another-collection-widget pull-right btn  btn-outline btn-success"
+        data-list-selector="#work-list">{{ 'catalog.create'|trans }}</button>
+        <div class="clearfix"></div>
+    </div>
+    <div class="table-responsive">
+    <table class="table  js-genus-scientist-wrapper" id="work-list" data-prototype="{{ _self.service_template(form.vars.prototype)|e }}"
+    data-widget-tags="{{ '<tbody></tbody>'|e }}"
+        data-widget-counter="{{ form|length }}" >
+        <thead>
+        <tr>
+        	<th>Наименование услуги</th>
+            <th width="120">Стоимость</th>
+        	<th width="120">Количество</th>
+            <th width="120">Сумма</th>
+            <th width="120">Действия</th>
+        </tr>
+        </thead>
+        {% for fields in form %}
+            {{ _self.service_template(fields) }}
+        {% endfor %}
+    </table>
+</div>
+{% endblock %}

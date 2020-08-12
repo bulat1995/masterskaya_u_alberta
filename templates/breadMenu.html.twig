@@ -1,0 +1,12 @@
+<nav aria-label="breadcrumb">
+  <ol class="breadcrumb">
+    <li class="breadcrumb-item"><a href="{{ path('device.show') }}">{{'devices'|trans}}</a></li>
+    {% for node in tree %}
+     {% if loop.last %}
+        <li class="breadcrumb-item active" aria-current="page">{{ node.name }}</li>
+        {% else %}
+        <li class="breadcrumb-item"><a href="{{ path('device.show',{id: node.id}) }}">{{ node.name }}</a></li>
+        {% endif %}
+    {% endfor %}
+  </ol>
+</nav>

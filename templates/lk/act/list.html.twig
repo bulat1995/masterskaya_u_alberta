@@ -1,0 +1,64 @@
+{% extends 'base.html.twig' %}
+{% block title %}{{'acts'|trans}}{% endblock %}
+
+{% block body %}
+	<nav aria-label="breadcrumb">
+	  <ol class="breadcrumb">
+	    <li class="breadcrumb-item active">{{'acts'|trans}}</li>
+	  </ol>
+	</nav>
+
+    <div class="page-header pb-2 mb-3">
+            <font size="5">{{'acts'|trans}}:</font>
+		{% if is_granted('ROLE_ACT_CREATE') %}
+        <a href="{{ path('act.create') }}">
+            <button type="button" class="btn  btn-outline btn-success pull-right">{{'add'|trans}}</button>
+        </a>
+		{% endif %}
+    </div>
+    {% if acts is empty %}
+       {% include 'lk/act/empty.html.twig' %}
+    {% else%}
+
+<div class="table-responsive">
+    <table width="100%" class="table table-striped">
+          <thead class="thead-light">
+           <tr>
+				<th scope="col">{{'act.dateCreate'|trans }}</th>
+				<th scope="col">{{'client.companyName'|trans }}</th>
+				<th scope="col">{{'act.price'|trans }}</th>
+				<th scope="col">{{'debt'|trans }}</th>
+				<th scope="col" align="center">{{'actions'|trans }}</th>
+            </tr>
+        </thead>
+        <tbody>
+
+    {% for act in acts %}
+        <tr>
+			<td>
+				{{ act.dateCreate|date("H:i d.m.Y")}}
+			</td>
+			<td>
+					{{ act.client.companyName }}
+			</td>
+			<td width="100">
+				{{ act.price}} {{'rubles.short'|trans}}
+			</td>
+			<td width="100">
+				{{ act.debt}} {{'rubles.short'|trans}}
+			</td>
+			<td >
+				<a href="{{ path('act.show',{ id : act.id }) }}">
+					<button class="btn  btn-outline btn-outline-info"> {{'readMore'|trans}} </button>
+				</a>
+			</td>
+        </tr>
+    {% endfor %}
+        </tbody>
+    </table>
+</div>
+     <div class="navigation text-center">
+        {{ knp_pagination_render(acts) }}
+    </div>
+    {% endif %}
+{% endblock %}

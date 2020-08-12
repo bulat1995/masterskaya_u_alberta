@@ -1,0 +1,156 @@
+{% extends 'base.html.twig' %}
+{% block title %}
+ {{document.docTemplate.name}} № {{ document.number}} {{ 'from'|trans }} {{document.dateClosed|date("d.m.Y")}}
+{% endblock %}
+
+{% block body %}
+    <nav aria-label="breadcrumb">
+      <ol class="breadcrumb">
+        <li class="breadcrumb-item"><a href="{{ path('client.list') }}">{{'clients'|trans}}</a></li>
+        <li class="breadcrumb-item"><a href="{{ path('client.show',{'id':document.client.id}) }}">{{document.client.companyName}}</a></li>
+        <li class="breadcrumb-item active ">{{document.docTemplate.name}} №{{document.number}}  {{ 'from'|trans }} {{document.dateClosed|date("d.m.Y")}}  {{document.client.companyName}} </li>
+      </ol>
+    </nav>
+    <div>
+
+    <h2> {{document.docTemplate.name}} № {{ document.number}} {{ 'from'|trans }} {{document.dateClosed|date("d.m.Y")}}</h2>
+    <div class=" mb-4">
+    {% if  not document.isPayed and is_granted('ROLE_DOCUMENT_EDIT') %}
+          <a href="{{ path('document.edit',{id: document.id }) }}">
+              <button type="button" class="btn btn-outline-success">{{'edit'|trans}}</button>
+          </a>
+
+          <a onclick="return confirm('Вы действительно хотите оплатить данный документ')"
+          href="{{ path('document.pay' , { id: document.id }) }}">
+              <button type="button" class="btn btn-outline-info">{{'document.toPayed'|trans}}</button>
+          </a>
+    {% else %}
+          <span class="btn btn-success  ">{{ 'document.payed'|trans }}</span>
+    {% endif %}
+      <a href="{{ path('document.download',{id: document.id }) }}" >
+          <button type="button" class="btn btn-outline-primary">{{'download'|trans}}</button>
+      </a>
+      <a target="_blank" href="{{ path('document.watch',{id: document.id }) }}">
+          <button type="button" class="btn btn-outline-success">{{'watch'|trans}}</button>
+      </a>
+    </div>
+    <div class="clearfix"></div>
+
+
+      <div class="row mb-3">
+        <div class="col-lg-3">
+          {{ 'client.companyName'|trans }}
+        </div>
+        <div class="col-lg-9">
+          {{document.client.companyName}}
+        </div>
+      </div>
+      <div class="row mb-3">
+        <div class="col-3">
+          {{ 'document'|trans }}
+        </div>
+        <div class="col-6">
+          {{document.docTemplate.name}}
+        </div>
+      </div>
+      <div class="row mb-3">
+        <div class="col-3">
+          {{ 'document.dateOpen'|trans }}
+        </div>
+        <div class="col-6">
+          {{document.dateOpen|date("d.m.Y")}}
+        </div>
+      </div>
+      <div class="row mb-3">
+        <div class="col-3">
+          {{ 'document.dateClosed'|trans }}
+        </div>
+        <div class="col-6">
+          {{document.dateClosed|date("d.m.Y")}}
+        </div>
+      </div>
+      {% if document.isPayed %}
+      <div class="row mb-3">
+        <div class="col-3">
+          {{ 'document.payed'|trans }}
+        </div>
+        <div class="col-6">
+          {{document.datePayed|date("d.m.Y")}}
+        </div>
+      </div>
+      {% endif %}
+
+      <div class="mt-5">
+          <h3 class="float-left">{{ 'worksShort'|trans}}</h3>
+              <a class="float-right" href="{{ path('document.acts',{id: document.id }) }}">
+                    <button type="button" class="btn btn-outline-success">{{'watch'|trans}}</button>
+              </a>
+                <a class="float-right mr-3" href="{{ path('document.application.download',{id: document.id }) }}">
+                    <button type="button" class="btn btn-outline-primary">{{'download'|trans}}</button>
+              </a>
+        	<div class="clearfix"></div>
+      <div>
+          <div class="table-responsive">
+          <table class="mt-2 table table-striped">
+            <thead>
+              <tr>
+                <th>{{ 'work'|trans}} </th>
+                <th> {{ 'work.price'|trans}}</th>
+                <th> {{ 'work.count'|trans}}</th>
+                <th> {{ 'work.fullPrice'|trans}}</th>
+              </tr>
+            </thead>
+            <tbody>
+          {% for work in application %}
+          	<tr>
+          		<td>{{ work.name}}</td>
+          		<td>{{ work.priceOne}} {{ 'rubles.short'|trans}}.</td>
+          		<td>{{ work.countOne}} {{work.countName}}</td>
+          		<td>{{ work.fullPrice}} {{ 'rubles.short'|trans}}.</td>
+              </tr>
+          {% endfor %}
+            </tbody>
+        	</table>
+        </div>
+          <div class="float-right">
+            <h5><b>{{ 'document.price'|trans}}:</b>  {{document.price}} {{ 'rubles.short'|trans}}</h5>
+          </div>
+
+
+
+
+          <div class="mt-lg-5">
+              <h3 class="float-left">{{ 'worksMore'|trans}}</h3>
+            	<div class="clearfix"></div>
+          <div>
+              <div class="table-responsive">
+              <table class="mt-2 table table-striped">
+                <thead>
+                  <tr>
+                      <th>{{ 'work.dateCreate'|trans}}.</th>
+                    <th>{{ 'work'|trans}} </th>
+                    <th> {{ 'work.price'|trans}}</th>
+                    <th> {{ 'work.count'|trans}}</th>
+                    <th> {{ 'work.fullPrice'|trans}}</th>
+                  </tr>
+                </thead>
+                <tbody>
+              {% for work in document.works %}
+              	<tr>
+              		<td>
+                       {{work.dateCreate|date("H:i d.m.Y") }}
+                      </td>
+              		<td>
+                        <a href="{{ path('act.show',{id:work.act.id})}}" target="_blank">{{ work.catalog.name}}</a>
+                    </td>
+              		<td>{{ work.price}} {{ 'rubles.short'|trans}}.</td>
+              		<td>{{ work.count}} {{ work.catalog.countName}}</td>
+              		<td>{{ work.fullPrice}} {{ 'rubles.short'|trans}}.</td>
+                  </tr>
+              {% endfor %}
+                </tbody>
+            	</table>
+            </div>
+
+
+{% endblock %}

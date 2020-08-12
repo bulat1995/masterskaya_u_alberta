@@ -1,0 +1,120 @@
+  <script>
+  function codeGenerate()
+  {
+
+    if($("select[id^=act_worksForAct_][id$=_catalog]").length>=1){
+        var str=$('#act_client').val()+':';
+            var stat=true;
+
+        //Изменение стоимости по выбору услуги
+         $("select[id^=act_worksForAct_][id$=_catalog]").each(function( index ) {
+            if(index!=0){
+                str+='.'
+            }
+            var id= this.id.match(/act_worksForAct_([\d+])_catalog/);
+            str+=$("#act_worksForAct_"+id[1]+"_catalog").val()
+                if($("#act_worksForAct_"+id[1]+"_count").val()>1 )
+                {
+                    str+='*'+$("#act_worksForAct_"+id[1]+"_count").val()
+                }
+        })
+        //str=str.replace(',,',',');
+        if(str.match(/\d{1,}\:((\d{0,}\*{0,}\d{1,})|(\d{0,}\*{0,}\d{1,}\.)|(\*{0,})){0,}\d{1,}$/) && $('#act_client').val()>0){
+            window.open('{{setting.qrCode}}show-qr/'+str);
+        }
+        else {
+            alert('Неверно заполнена форма');
+        }
+        //console.log(str);
+    }
+  }
+    var price =[], count=[];
+        function calcul()
+        {
+            var fullPrice=0;
+            for(var i=0;i<price.length;i++){
+                if(isNaN(price[i]) || isNaN(count[i]))
+                    continue;
+                fullPrice+=price[i]*count[i];
+            }
+            $('#fullPrice').html(fullPrice.toFixed(2).replace('.',','));
+        }
+        function priceSet()
+        {
+            //Изменение стоимости по выбору услуги
+             $("select[id^=act_worksForAct_][id$=_catalog]").each(function( index ) {
+                var id= this.id.match(/act_worksForAct_([\d+])_catalog/);
+                price[id[1]]= parseFloat($("#act_worksForAct_"+id[1]+"_price").val().replace(',','.')).toFixed(2);
+                if($("#act_worksForAct_"+id[1]+"_count").val()<1){
+                    $("#act_worksForAct_"+id[1]+"_count").val(1);
+                }
+                count[id[1]]= parseInt($("#act_worksForAct_"+id[1]+"_count").val());
+                $("#act_worksForAct_"+id[1]+"_catalog").change('input',function(){
+                   $("#act_worksForAct_"+id[1]+"_price").val(parseFloat($('option:selected', this ).attr('attr-price').replace(',','.')).toFixed(2));
+                    price[id[1]]=parseFloat($('option:selected', this ).attr('attr-price').replace(',','.')).toFixed(2);
+                   $("#act_worksForAct_"+id[1]+"_fullPrice").val(price[id[1]]*count[id[1]]);
+                   //Если поле количество пустое
+                   calcul();
+                })
+            })
+
+            //цена за 1
+            $("input[id^=act_worksForAct_][id$=_price]").each(function( index ) {
+                var id= this.id.match(/act_worksForAct_([\d+])_price/);
+                $(this).change('input',function(){
+                    price[id[1]]=parseFloat($( this ).val().replace(',','.'));
+                    $("#act_worksForAct_"+id[1]+"_fullPrice").val((price[id[1]]*count[id[1]]).toFixed(2));
+                    calcul();
+                })
+            })
+            //цена за 1
+            $("input[id^=act_worksForAct_][id$=_count]").each(function( index ) {
+                var id= this.id.match(/act_worksForAct_([\d+])_count/);
+                $(this).change(function(){
+                    count[id[1]]=parseInt($( this ).val());
+                   $("#act_worksForAct_"+id[1]+"_fullPrice").val((price[id[1]]*count[id[1]]).toFixed(2));
+                    calcul();
+                })
+            })
+        }
+        jQuery(document).ready(function () {
+            priceSet();
+            $('select').select2();
+            $('select').on('change',function(){
+
+             });
+            jQuery('.add-another-collection-widget').click(function (e) {
+                var list = jQuery(jQuery(this).attr('data-list-selector'));
+                var counter = list.data('widget-counter') || list.children().length,
+                newWidget = list.attr('data-prototype');
+                newWidget = newWidget.replace(/__name__/g, counter);
+                counter++;
+                list.data('widget-counter', counter);
+                var newElem = jQuery(list.attr('data-widget-tags')).html(newWidget);
+                newElem.appendTo(list);
+                priceSet();
+                $('select').select2();
+            });
+            //Удаление выбранного элемента
+            var $wrapper = $('.js-genus-scientist-wrapper');
+            $wrapper.on('click', '.js-remove-scientist', function(e) {
+                e.preventDefault();
+                if(confirm('Вы действительно хотите удалить данную услугу')){
+                    var el=$(this.closest('.js-genus-scientist-item'));
+                    price[el.html().match(/act_worksForAct_([\d+])_count/)[1]]=0;
+                    count[el.html().match(/act_worksForAct_([\d+])_count/)[1]]=0;
+                     calcul();
+                  $(this).closest('.js-genus-scientist-item').remove();
+
+                }
+            });
+        });
+        function setCutDate()
+        {
+            var now = new Date();
+            var day = ("0" + now.getDate()).slice(-2);
+            var month = ("0" + (now.getMonth() + 1)).slice(-2);
+            var today = now.getFullYear()+"-"+(month)+"-"+(day) ;
+            $('#act_dateCreate').val(today);
+        }
+  </script>

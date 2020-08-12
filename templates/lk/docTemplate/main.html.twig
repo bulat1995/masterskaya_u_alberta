@@ -1,0 +1,17 @@
+{% set index='index'%}
+{% set name='name'%}
+{% set count='count'%}
+{% set countName='countName'%}
+{% set fullPrice='fullPrice'%}
+{% set price='price'%}
+{% set order=[ index , name , count , countName , fullPrice , price ] %}
+{% set months=['','января','февраля','марта','апреля','мая','июня','июля','августа','сентября','октября','ноября','декабря'] %}
+
+<html>
+<head>
+    <title>{{nameDoc}}</title>
+</head>
+<body>
+{{include(template_from_string(docTemplate))}}
+</body>
+</html>

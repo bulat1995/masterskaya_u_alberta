@@ -1,0 +1,31 @@
+{% extends 'base.html.twig' %}
+
+{% block title %} {{'user_profile'|trans}} {% endblock title%}
+{% block body %}
+
+<div class="row">
+	<div class="col pl-0">
+		<h3>{{'user_profile'|trans}}</h3>
+	</div>
+</div>
+<div class="fos_user_user_show">
+	<div class="row mt-3">
+		<div class="col col-3 font-weight-bold">
+			{{ 'user_username'|trans }}:
+		</div>
+		<div class="col">
+			{{ user.username }}
+		</div>
+	</div>
+	<div class="row mt-3">
+		<div class="col col-3 font-weight-bold">
+			{{ 'user_email'|trans }}:
+		</div>
+		<div class="col">
+			{{ user.email }}
+		</div>
+	</div>
+</div>
+
+
+{% endblock body %}

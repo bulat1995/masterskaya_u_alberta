@@ -1,0 +1,31 @@
+{% extends 'base.html.twig' %}
+{% block title %} {{'catalog.add'|trans}}{% endblock %}
+{% block body %}
+
+ {% if tree is empty %}
+    <nav aria-label="breadcrumb">
+      <ol class="breadcrumb">
+        <li class="breadcrumb-item"><a href="{{ path('device.show') }}">{{'devices'|trans}}</a></li>
+      </ol>
+    </nav>
+    {% else%}
+	<nav aria-label="breadcrumb">
+	  <ol class="breadcrumb">
+	    <li class="breadcrumb-item"><a href="{{ path('device.show') }}">{{'devices'|trans}}</a></li>
+		{% for node in tree %}
+		    <li class="breadcrumb-item"><a href="{{ path('device.show',{id: node.id}) }}">{{ node.name }}</a></li>
+		{% endfor %}
+		    <li class="breadcrumb-item active" aria-current="page">{{'catalog.add'|trans}}</li>
+	  </ol>
+	</nav>
+    {% endif %}
+    <h2>{{'catalog.add'|trans}}</h2>
+    {{ form_start(form) }}
+    {{ form_row(form.name)}}
+    {{ form_row(form.device)|replace({"&amp;": "&"})|raw }}
+        {{ form_widget(form) }}
+        <div class="form-group">
+                <button type="submit" class="btn btn-success pull-right">{{'add'|trans}}</button>
+        </div>
+    {{ form_end(form) }}
+{% endblock %}

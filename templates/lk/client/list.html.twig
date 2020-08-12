@@ -1,0 +1,33 @@
+{% extends 'base.html.twig' %}
+{% block title %}{{'clients'|trans}}{% endblock %}
+
+{% block body %}
+	<nav aria-label="breadcrumb">
+	  <ol class="breadcrumb">
+	    <li class="breadcrumb-item active">{{'clients'|trans}}</li>
+	  </ol>
+	</nav>
+    <div class="page-header pb-2 mb-3">
+            <font size="5">{{'clients'|trans}}:</font>
+
+		{% if is_granted('ROLE_CLIENT_CREATE') %}
+        <a href="{{ path('client.create') }}">
+            <button type="button" class="btn  btn-outline btn-success pull-right">{{'client.create'|trans}}</button>
+        </a>
+		{% endif %}
+    </div>
+    {% if clients is empty %}
+       {% include 'block_empty.html.twig' %}
+    {% else%}
+	<div class="list-group">
+    {% for client in clients %}
+		  <a  href="{{ path('client.show',{id: client.id}) }}" class="list-group-item list-group-item-action">
+			{{ client.companyName }}
+		  </a>
+		  {% endfor %}
+	</div>
+     <div class="navigation text-center">
+        {{ knp_pagination_render(clients) }}
+    </div>
+    {% endif %}
+{% endblock %}

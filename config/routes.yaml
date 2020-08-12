@@ -1,0 +1,8 @@
+index:
+   path: /
+   controller: App\Controller\DeviceController::show
+fos_user:
+    resource: "@FOSUserBundle/Resources/config/routing/all.xml"
+    prefix:
+      en: '/en'
+      ru: ''
